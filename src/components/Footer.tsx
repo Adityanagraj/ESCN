@@ -103,9 +103,9 @@ export function Footer() {
       </div>
 
       {/* Main footer grid */}
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 py-14 sm:py-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-12 gap-10">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-12 gap-10 sm:gap-10">
         {/* Brand */}
-        <div className="col-span-2 sm:col-span-3 lg:col-span-5">
+        <div className="sm:col-span-3 lg:col-span-5">
           <div className="flex items-center gap-2">
             <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-rcb-red">
               <span className="font-display text-[12px] tracking-widest text-white">PB</span>
@@ -137,7 +137,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="inline-flex w-10 h-10 items-center justify-center rounded-full border border-white/15 text-white/80 hover:text-white hover:border-rcb-red transition-colors"
+              className="inline-flex w-11 h-11 items-center justify-center rounded-full border border-white/15 text-white/80 hover:text-white hover:border-rcb-red active:scale-95 transition-all"
             >
               <InstagramIcon className="w-4 h-4" />
             </a>
@@ -146,7 +146,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
-              className="inline-flex w-10 h-10 items-center justify-center rounded-full border border-white/15 text-white/80 hover:text-white hover:border-rcb-red transition-colors"
+              className="inline-flex w-11 h-11 items-center justify-center rounded-full border border-white/15 text-white/80 hover:text-white hover:border-rcb-red active:scale-95 transition-all"
             >
               <YoutubeIcon className="w-4 h-4" />
             </a>
@@ -155,7 +155,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="X / Twitter"
-              className="inline-flex w-10 h-10 items-center justify-center rounded-full border border-white/15 text-white/80 hover:text-white hover:border-rcb-red transition-colors"
+              className="inline-flex w-11 h-11 items-center justify-center rounded-full border border-white/15 text-white/80 hover:text-white hover:border-rcb-red active:scale-95 transition-all"
             >
               <TwitterIcon className="w-4 h-4" />
             </a>
@@ -165,14 +165,14 @@ export function Footer() {
         {/* Shop */}
         <div className="lg:col-span-3">
           <p className="text-[10px] tracking-[0.35em] uppercase text-rcb-muted">Shop</p>
-          <ul className="mt-4 space-y-3 text-sm">
+          <ul className="mt-3 sm:mt-4 -mx-2 sm:mx-0">
             {PRODUCTS.map((p) => (
               <li key={p.id}>
                 <a
                   href={p.shopUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/85 hover:text-rcb-red transition-colors"
+                  className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors"
                 >
                   {p.name}
                 </a>
@@ -184,33 +184,35 @@ export function Footer() {
         {/* Help */}
         <div className="lg:col-span-2">
           <p className="text-[10px] tracking-[0.35em] uppercase text-rcb-muted">Help</p>
-          <ul className="mt-4 space-y-3 text-sm">
-            <li><a className="text-white/85 hover:text-rcb-red transition-colors" href="#faq" onClick={go('#faq')}>FAQ</a></li>
-            <li><a className="text-white/85 hover:text-rcb-red transition-colors" href="#contact">TODO: Shipping policy</a></li>
-            <li><a className="text-white/85 hover:text-rcb-red transition-colors" href="#contact">TODO: Returns &amp; refunds</a></li>
-            <li><a className="text-white/85 hover:text-rcb-red transition-colors" href="#contact">TODO: Order tracking</a></li>
+          <ul className="mt-3 sm:mt-4 -mx-2 sm:mx-0">
+            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#faq" onClick={go('#faq')}>FAQ</a></li>
+            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#contact">TODO: Shipping policy</a></li>
+            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#contact">TODO: Returns &amp; refunds</a></li>
+            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#contact">TODO: Order tracking</a></li>
           </ul>
         </div>
 
         {/* Legal */}
         <div className="lg:col-span-2">
           <p className="text-[10px] tracking-[0.35em] uppercase text-rcb-muted">Brand</p>
-          <ul className="mt-4 space-y-3 text-sm">
-            <li><a className="text-white/85 hover:text-rcb-red transition-colors" href="#about" onClick={go('#about')}>Our story</a></li>
-            <li><a className="text-white/85 hover:text-rcb-red transition-colors" href="#contact">TODO: Press</a></li>
-            <li><a className="text-white/85 hover:text-rcb-red transition-colors" href="#contact">TODO: Privacy</a></li>
-            <li><a className="text-white/85 hover:text-rcb-red transition-colors" href="#contact">TODO: Terms</a></li>
+          <ul className="mt-3 sm:mt-4 -mx-2 sm:mx-0">
+            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#about" onClick={go('#about')}>Our story</a></li>
+            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#contact">TODO: Press</a></li>
+            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#contact">TODO: Privacy</a></li>
+            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#contact">TODO: Terms</a></li>
           </ul>
         </div>
       </div>
 
       {/* Trust seals + copyright */}
       <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-rcb-muted">
-          <p>
-            © {new Date().getFullYear()} {BRAND.name}. All rights reserved. Not affiliated with Royal Challengers Bengaluru or the BCCI.
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-rcb-muted text-center sm:text-left">
+          <p className="leading-relaxed">
+            © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
+            <br className="sm:hidden" />
+            <span className="sm:ml-1">Not affiliated with Royal Challengers Bengaluru or the BCCI.</span>
           </p>
-          <div className="flex items-center gap-4 tracking-[0.25em] uppercase">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 tracking-[0.25em] uppercase">
             <span>Razorpay</span>
             <span className="w-px h-3 bg-white/15" />
             <span>UPI</span>

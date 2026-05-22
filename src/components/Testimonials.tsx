@@ -241,7 +241,7 @@ export function Testimonials() {
     >
       <div className="absolute inset-0 rcb-noise opacity-25 pointer-events-none" aria-hidden />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 pt-20 sm:pt-28">
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 pt-14 sm:pt-28">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
           <div>
             <motion.p
@@ -327,7 +327,7 @@ export function Testimonials() {
       </div>
 
       {/* Dots */}
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 pb-16 sm:pb-20 mt-6 flex items-center justify-center gap-2.5">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 pb-12 sm:pb-20 mt-6 flex items-center justify-center gap-2.5">
         {TESTIMONIALS.map((t, i) => (
           <button
             key={t.id}

@@ -147,7 +147,7 @@ export function Faq() {
 
   return (
     <section id="faq" className="relative bg-rcb-bg">
-      <div className="mx-auto max-w-5xl px-5 sm:px-8 py-24 sm:py-28">
+      <div className="mx-auto max-w-5xl px-5 sm:px-8 py-16 sm:py-28">
         <div className="text-center">
           <p className="text-xs tracking-[0.45em] uppercase text-rcb-red">
             Questions, answered honestly

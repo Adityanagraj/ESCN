@@ -552,7 +552,7 @@ export function About() {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 py-24 sm:py-32">
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8 py-16 sm:py-32">
         {/* Header */}
         <motion.p
           initial={{ y: 16, opacity: 0 }}
@@ -586,7 +586,7 @@ export function About() {
         </motion.p>
 
         {/* Card deck */}
-        <div className="mt-14 sm:mt-20 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-7 lg:gap-8">
+        <div className="mt-10 sm:mt-20 grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-7 lg:gap-8">
           {CARDS.map((card, i) => (
             <AboutCard
               key={card.id}
@@ -615,7 +615,7 @@ export function About() {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.9, ease: EASE }}
-          className="mt-24 sm:mt-32 max-w-3xl mx-auto text-center relative"
+          className="mt-16 sm:mt-32 max-w-3xl mx-auto text-center relative"
         >
           <Quote className="mx-auto w-10 h-10 text-rcb-red" />
           <blockquote

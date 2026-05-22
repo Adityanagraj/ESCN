@@ -75,7 +75,8 @@ export function Hero() {
       aria-label="PLAY BOLD hero"
       className="
         rcb-section relative overflow-hidden bg-rcb-bg
-        flex items-center justify-center
+        flex items-end sm:items-center justify-center
+        pt-20 pb-16 sm:pt-0 sm:pb-0
       "
       style={{ perspective: 1400 }}
     >
@@ -111,7 +112,7 @@ export function Hero() {
       <motion.div
         className="
           relative z-10
-          w-[94vw] h-[72dvh]
+          w-[96vw] h-[68dvh]
           sm:w-[80vw] sm:h-[80dvh]
           md:w-[68vw] md:h-[86dvh]
           lg:w-[58vw] lg:h-[90dvh]

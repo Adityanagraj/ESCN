@@ -26,12 +26,44 @@ body,
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  /* Prevent overscroll bounce showing white below the dark page on iOS */
+  background-color: var(--color-rcb-bg);
 }
 
 body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  /* Kill the blue iOS Safari tap highlight; we already have proper :active styles */
+  -webkit-tap-highlight-color: transparent;
+  /* Respect iPhone safe areas for floating widgets */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Eliminate double-tap delay and accidental text selection on UI controls */
+button,
+a,
+[role='button'] {
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Inputs default font-size 16px+ so iOS doesn't auto-zoom on focus */
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+@media (min-width: 640px) {
+  input,
+  textarea,
+  select {
+    font-size: inherit;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

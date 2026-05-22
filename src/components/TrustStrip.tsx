@@ -11,7 +11,7 @@ export function TrustStrip() {
       aria-label="Why customers trust PLAY BOLD"
       className="relative bg-rcb-bg border-y border-white/5"
     >
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 py-16 sm:py-20">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 py-12 sm:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {TRUST_BADGES.map((b, i) => {
             const Icon = ICONS[i % ICONS.length]

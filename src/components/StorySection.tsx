@@ -36,12 +36,12 @@ export function StorySection() {
           leading-[0.85] whitespace-nowrap
         "
       >
-        <span className="block" style={{ fontSize: 'clamp(8rem, 28vw, 24rem)' }}>
+        <span className="block" style={{ fontSize: 'clamp(6rem, 24vw, 24rem)' }}>
           BELIEVE
         </span>
       </motion.span>
 
-      <div className="relative mx-auto max-w-4xl px-5 sm:px-8 py-28 sm:py-40">
+      <div className="relative mx-auto max-w-4xl px-5 sm:px-8 py-20 sm:py-40">
         <motion.p
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}

@@ -23,7 +23,7 @@ function ProductRow({ product, index }: Props) {
       className={[
         'relative grid items-center gap-10 lg:gap-16',
         'grid-cols-1 lg:grid-cols-12',
-        'py-20 sm:py-24 lg:py-28',
+        'py-14 sm:py-24 lg:py-28',
       ].join(' ')}
     >
       {/* Chapter marker */}
@@ -196,7 +196,7 @@ export function ProductShowcase() {
     <section id="shop" className="relative bg-rcb-bg">
       <div className="absolute inset-0 rcb-noise opacity-30 pointer-events-none" />
 
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 pt-20 sm:pt-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 pt-14 sm:pt-28">
         <motion.p
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}

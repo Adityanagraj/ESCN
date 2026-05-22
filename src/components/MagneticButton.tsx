@@ -107,6 +107,7 @@ export function MagneticButton(props: MagneticButtonProps) {
         onClick={onClick}
         onMouseMove={onMove}
         onMouseLeave={onLeave}
+        whileTap={{ scale: 0.96 }}
         target={target}
         rel={rel}
         style={style}
@@ -127,6 +128,7 @@ export function MagneticButton(props: MagneticButtonProps) {
       onClick={onClick}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
+      whileTap={{ scale: 0.96 }}
       disabled={disabled}
       style={style}
       className={className}

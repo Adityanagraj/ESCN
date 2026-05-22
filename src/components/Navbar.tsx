@@ -84,7 +84,7 @@ export function Navbar() {
           </a>
           <button
             type="button"
-            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 text-white border border-white/10"
+            className="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-full bg-white/5 text-white border border-white/10 active:scale-95 transition-transform"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -108,7 +108,7 @@ export function Navbar() {
                 <a
                   href={link.href}
                   onClick={go(link.href)}
-                  className="block px-3 py-3 rounded-xl text-base text-white/85 hover:bg-white/5"
+                  className="flex items-center min-h-[48px] px-4 rounded-xl text-base text-white/85 hover:bg-white/5 active:bg-white/10 transition-colors"
                 >
                   {link.label}
                 </a>
@@ -118,7 +118,7 @@ export function Navbar() {
           <a
             href="#shop"
             onClick={go('#shop')}
-            className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-rcb-red px-4 py-3 text-sm font-semibold text-white"
+            className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-rcb-red min-h-[48px] px-4 text-sm font-semibold text-white active:scale-[0.98] transition-transform"
           >
             <ShoppingBag className="w-4 h-4" />
             Shop now

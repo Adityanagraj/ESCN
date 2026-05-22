@@ -81,9 +81,13 @@ export function LiveTicker() {
           transition={{ duration: 0.6, ease: EASE }}
           aria-live="polite"
           aria-label="Recent shipment"
+          style={{
+            bottom: 'max(1rem, env(safe-area-inset-bottom))',
+          }}
           className="
-            fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-[100]
-            max-w-[calc(100vw-2rem)] sm:max-w-sm
+            fixed left-3 sm:left-6 z-[100]
+            right-3 sm:right-auto
+            sm:max-w-sm
             rounded-2xl border border-white/10 bg-rcb-bg/85
             backdrop-blur-xl
             shadow-[0_24px_50px_-20px_rgba(0,0,0,0.7)]
@@ -130,8 +134,8 @@ export function LiveTicker() {
               onClick={handleDismiss}
               aria-label="Dismiss shipment notifications"
               className="
-                flex-shrink-0 inline-flex w-7 h-7 items-center justify-center rounded-full
-                text-rcb-muted hover:text-white hover:bg-white/5 transition-colors
+                flex-shrink-0 inline-flex w-9 h-9 -m-1.5 items-center justify-center rounded-full
+                text-rcb-muted hover:text-white hover:bg-white/5 active:bg-white/10 transition-colors
                 focus:outline-none focus-visible:ring-2 focus-visible:ring-rcb-red
               "
             >
