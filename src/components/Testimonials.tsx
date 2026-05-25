@@ -261,10 +261,10 @@ export function Testimonials() {
               className="mt-3 font-display tracking-tight text-white leading-[0.92]"
               style={{ fontSize: 'clamp(2rem, 6vw, 4.25rem)' }}
             >
-              500+ frames. <span className="text-rcb-red">4.9 stars.</span>
+              50+ frames. <span className="text-rcb-red">4.5 stars.</span>
             </motion.h2>
             <p className="mt-4 max-w-xl text-rcb-muted leading-relaxed">
-              Real notes from real customers — verified buyers, real names withheld for privacy and used with permission.
+              Real notes from real customers.
             </p>
           </div>
 

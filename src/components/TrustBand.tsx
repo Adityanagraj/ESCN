@@ -3,9 +3,9 @@ import { motion } from 'framer-motion'
 import { EASE } from '../lib/motion'
 
 const METRICS = [
-  { k: '4.9★', v: 'Avg. customer rating' },
-  { k: '500+', v: 'Frames shipped' },
-  { k: '48 hr', v: 'Dispatch window' },
+  { k: '4.5★', v: 'Avg. customer rating' },
+  { k: '50+', v: 'Frames shipped' },
+  { k: '72 hr', v: 'Dispatch window' },
   { k: '100%', v: 'Transit insured' },
 ]
 

@@ -1,9 +1,11 @@
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { ArrowUpRight, Check, ShieldCheck, Truck } from 'lucide-react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { useRef, useState } from 'react'
+import { ArrowUpRight, Check, ChevronDown, ShieldCheck, Truck } from 'lucide-react'
 import { PRODUCTS, type Product } from '../data/brand'
 import { EASE } from '../lib/motion'
 import { MagneticButton } from './MagneticButton'
+import { ProductGallery } from './ProductGallery'
+import { buildOrderInquiryUrl } from '../lib/whatsapp'
 
 type Props = {
   product: Product
@@ -11,6 +13,145 @@ type Props = {
 }
 
 const easeOut = EASE
+
+/**
+ * Glassy collapsible that hides the long-form story + specs behind a single
+ * tap, keeping the visible card to name / chapter / one-liner only.
+ *
+ * Default-open for the first product so the pattern is discoverable on land;
+ * subsequent products stay collapsed for a clean scroll.
+ */
+function ProductDetailsAccordion({
+  product,
+  defaultOpen = false,
+}: {
+  product: Product
+  defaultOpen?: boolean
+}) {
+  const [open, setOpen] = useState(defaultOpen)
+  const panelId = `product-details-${product.id}`
+
+  return (
+    <div className="mt-7 relative">
+      {/* Soft outer glow so the glass plate feels lit, not floating */}
+      <div
+        aria-hidden
+        className={[
+          'absolute -inset-px rounded-2xl pointer-events-none transition-opacity duration-500',
+          'bg-gradient-to-br from-rcb-red/25 via-transparent to-rcb-gold/15 blur-md',
+          open ? 'opacity-80' : 'opacity-40',
+        ].join(' ')}
+      />
+      <div
+        className="
+          relative rounded-2xl overflow-hidden
+          border border-white/15
+          bg-white/[0.045] backdrop-blur-xl
+          shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]
+        "
+      >
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={panelId}
+          onClick={() => setOpen((v) => !v)}
+          className="
+            w-full min-h-[56px]
+            flex items-center justify-between gap-4
+            px-5 py-4 text-left
+            transition-colors hover:bg-white/[0.04]
+            focus:outline-none
+            focus-visible:ring-2 focus-visible:ring-rcb-red
+            focus-visible:ring-offset-2 focus-visible:ring-offset-rcb-bg
+          "
+        >
+          <span className="flex items-center gap-3">
+            <span
+              className={[
+                'w-1.5 h-1.5 rounded-full transition-all duration-300',
+                open
+                  ? 'bg-rcb-red shadow-[0_0_10px_rgba(236,28,36,0.85)]'
+                  : 'bg-rcb-muted',
+              ].join(' ')}
+            />
+            <span className="text-[11px] tracking-[0.35em] uppercase text-white/85">
+              {open ? 'Hide details' : 'The full story · specs'}
+            </span>
+          </span>
+          <motion.span
+            animate={{ rotate: open ? 180 : 0 }}
+            transition={{ duration: 0.3, ease: easeOut }}
+            className="text-white/70"
+            aria-hidden
+          >
+            <ChevronDown className="w-4 h-4" />
+          </motion.span>
+        </button>
+
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.div
+              key="content"
+              id={panelId}
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.38, ease: easeOut }}
+              className="overflow-hidden"
+            >
+              <div className="px-5 pb-6 pt-1 space-y-6 border-t border-white/10">
+                <div className="pt-5 space-y-4">
+                  <p className="text-base text-white/85 leading-relaxed">
+                    {product.hook}
+                  </p>
+                  <p className="text-sm text-rcb-muted leading-relaxed">
+                    {product.description}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-[10px] tracking-[0.35em] uppercase text-rcb-red mb-3">
+                    What&rsquo;s inside the frame
+                  </p>
+                  <ul className="grid gap-3">
+                    {product.highlights.map((h) => (
+                      <li
+                        key={h}
+                        className="flex items-start gap-3 text-sm text-white/85"
+                      >
+                        <span className="mt-0.5 inline-flex w-5 h-5 items-center justify-center rounded-full bg-rcb-red/20 text-rcb-red shrink-0">
+                          <Check className="w-3.5 h-3.5" />
+                        </span>
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <p className="text-[10px] tracking-[0.35em] uppercase text-rcb-red mb-3">
+                    Specifications
+                  </p>
+                  <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 text-sm">
+                    {product.specs.map((s) => (
+                      <div
+                        key={s.label}
+                        className="flex items-baseline justify-between gap-3 py-2 border-b border-white/5 last:border-0 sm:last:border-b sm:[&:nth-last-child(-n+2)]:border-0"
+                      >
+                        <dt className="text-rcb-muted">{s.label}</dt>
+                        <dd className="text-white/90 text-right">{s.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  )
+}
 
 function ProductRow({ product, index }: Props) {
   const ref = useRef<HTMLDivElement | null>(null)
@@ -44,32 +185,13 @@ function ProductRow({ product, index }: Props) {
           reverse ? 'lg:order-2' : 'lg:order-1',
         ].join(' ')}
       >
-        <div className="relative">
-          <div
-            className="absolute -inset-10 rcb-red-glow opacity-70 pointer-events-none"
-            aria-hidden
-          />
-          <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[5/4] w-full overflow-hidden rounded-3xl border border-white/10 bg-rcb-surface">
-            <img
-              src={product.image}
-              alt={product.name}
-              loading="lazy"
-              className="absolute inset-0 w-full h-full object-contain p-6 sm:p-8"
-              draggable={false}
-            />
-            {/* Numbered edition tag */}
-            <div className="absolute top-5 right-5 rounded-full border border-rcb-gold/50 bg-black/40 backdrop-blur px-3 py-1.5 text-[10px] tracking-[0.25em] uppercase text-rcb-gold">
-              {product.specs.find((s) => s.label === 'Edition')?.value ?? 'Limited'}
-            </div>
-            <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between text-[11px] text-white/70 uppercase tracking-[0.25em]">
-              <span className="inline-flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                In stock
-              </span>
-              <span className="hidden sm:inline">Studio render · actual frame may vary</span>
-            </div>
-          </div>
-        </div>
+        <ProductGallery
+          images={product.images}
+          alt={product.name}
+          editionTag={
+            product.specs.find((s) => s.label === 'Edition')?.value ?? 'Limited'
+          }
+        />
       </motion.div>
 
       {/* Text column */}
@@ -95,44 +217,11 @@ function ProductRow({ product, index }: Props) {
           {product.subtitle}
         </p>
 
-        <p className="mt-6 font-display tracking-wide text-rcb-gold text-lg sm:text-xl leading-snug">
+        <p className="mt-6 font-display tracking-wide text-rcb-gold text-lg sm:text-xl leading-snug max-w-xl">
           &ldquo;{product.tagline}&rdquo;
         </p>
 
-        <p className="mt-6 text-base text-white/85 leading-relaxed max-w-xl">
-          {product.hook}
-        </p>
-
-        <p className="mt-4 text-sm text-rcb-muted leading-relaxed max-w-xl">
-          {product.description}
-        </p>
-
-        {/* Highlights */}
-        <ul className="mt-7 grid gap-3">
-          {product.highlights.map((h) => (
-            <li key={h} className="flex items-start gap-3 text-sm sm:text-base text-white/85">
-              <span className="mt-0.5 inline-flex w-5 h-5 items-center justify-center rounded-full bg-rcb-red/20 text-rcb-red">
-                <Check className="w-3.5 h-3.5" />
-              </span>
-              {h}
-            </li>
-          ))}
-        </ul>
-
-        {/* Specs (collapsible feel via simple list) */}
-        <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-          <p className="text-[10px] tracking-[0.35em] uppercase text-rcb-muted">
-            Specifications
-          </p>
-          <dl className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
-            {product.specs.map((s) => (
-              <div key={s.label} className="flex items-baseline justify-between gap-3">
-                <dt className="text-rcb-muted">{s.label}</dt>
-                <dd className="text-white/90 text-right">{s.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+        <ProductDetailsAccordion product={product} defaultOpen={index === 0} />
 
         {/* Price + CTA */}
         <div className="mt-8 flex flex-col sm:flex-row sm:items-end gap-5 sm:gap-6">
@@ -156,7 +245,7 @@ function ProductRow({ product, index }: Props) {
           </div>
 
           <MagneticButton
-            href={product.shopUrl}
+            href={buildOrderInquiryUrl(product)}
             target="_blank"
             rel="noopener noreferrer"
             strength={0.32}

@@ -3,9 +3,13 @@ import { useRef } from 'react'
 import { EASE } from '../lib/motion'
 
 const PARAGRAPHS = [
-  "Every wall has a story. The framed degree. The faded poster. The match-day photograph that you swore you'd reprint, but never did.",
-  "We started PLAY BOLD because we were tired of seeing the team we love reduced to flat prints under cheap glass. The roar from the Chinnaswamy deserved something heavier. Something hand-built.",
-  "So we built it. Three frames. Hundreds of hours of carpentry, sculpting and hand-painting. Every piece is numbered, signed off, and made for one wall — yours.",
+"Every RCB fan has something on their wall. A jersey from a memorable season. A fading poster. A moment from Chinnaswamy that still feels louder in your head than it ever did on TV But somehow, the passion never matched the quality.",
+    
+"We built PlayBold because the roar from Chinnaswamy deserved something heavier. Something handcrafted. Something worthy of the fans who stayed loyal through every season. ❤️🖤",
+"So we spent hundreds of hours designing, sculpting, carving, and hand-painting every piece by hand. No shortcuts. No factory feel. Every artwork is individually numbered, signed off, and made to own one wall yours",
+
+"And maybe… it’s also a subtle reminder to the #WhistleArmy 🔊 and #MIPaltan that loyalty looks better in red and black🔥"
+
 ]
 
 export function StorySection() {

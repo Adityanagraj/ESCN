@@ -85,8 +85,8 @@ export function LiveTicker() {
             bottom: 'max(1rem, env(safe-area-inset-bottom))',
           }}
           className="
-            fixed left-3 sm:left-6 z-[100]
-            right-3 sm:right-auto
+            fixed left-3 sm:left-6 z-[80]
+            right-20 sm:right-auto
             sm:max-w-sm
             rounded-2xl border border-white/10 bg-rcb-bg/85
             backdrop-blur-xl

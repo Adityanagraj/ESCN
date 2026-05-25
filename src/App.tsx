@@ -13,6 +13,8 @@ import { About } from './components/About'
 import { Faq } from './components/Faq'
 import { Footer } from './components/Footer'
 import { LiveTicker } from './components/LiveTicker'
+import { AnthemToggle } from './components/AnthemToggle'
+import { WhatsappFab } from './components/WhatsappFab'
 
 function App() {
   const [ready, setReady] = useState(false)
@@ -38,8 +40,18 @@ function App() {
         <Footer />
       </main>
 
-      {/* Floating widgets — only mount after splash has finished. */}
-      {ready && <LiveTicker />}
+      {/* Floating widgets — only mount after splash has finished.
+          Stacking order (z-index, by intent):
+            WhatsappFab z-95 → primary conversion CTA, always on top
+            AnthemToggle z-90 → sits above the FAB, smaller chip
+            LiveTicker   z-80 → background notification, lowest of the three */}
+      {ready && (
+        <>
+          <WhatsappFab />
+          <AnthemToggle />
+          <LiveTicker />
+        </>
+      )}
     </div>
   )
 }

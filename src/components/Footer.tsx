@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
 import { BRAND, PRODUCTS } from '../data/brand'
 import { MagneticButton } from './MagneticButton'
+import { buildOrderInquiryUrl } from '../lib/whatsapp'
 
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -169,7 +170,7 @@ export function Footer() {
             {PRODUCTS.map((p) => (
               <li key={p.id}>
                 <a
-                  href={p.shopUrl}
+                  href={buildOrderInquiryUrl(p)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors"

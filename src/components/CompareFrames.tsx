@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowUpRight, Check, Sparkles } from 'lucide-react'
 import { COMPARE_ROWS, PRODUCTS } from '../data/brand'
 import { EASE } from '../lib/motion'
+import { buildOrderInquiryUrl } from '../lib/whatsapp'
 
 type ProductId = 'king-kohli' | 'champions' | 'play-bold'
 
@@ -177,8 +178,8 @@ export function CompareFrames() {
                 index={i}
                 active={highlight === id}
                 onTap={() => setHighlight(highlight === id ? null : id)}
-                shopUrl={product.shopUrl}
-                image={product.image}
+                shopUrl={buildOrderInquiryUrl(product)}
+                image={product.images[0]}
               />
             )
           })}
@@ -302,7 +303,7 @@ export function CompareFrames() {
                   className="px-5 py-5 border-t border-white/10"
                 >
                   <a
-                    href={p.shopUrl}
+                    href={buildOrderInquiryUrl(p)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="

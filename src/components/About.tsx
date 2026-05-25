@@ -130,7 +130,7 @@ const CARDS: ChapterCard[] = [
     icon: Heart,
     meta: [
       { label: 'Status', value: 'Independent fan studio' },
-      { label: 'Warranty', value: '12-month craftsmanship' },
+      { label: 'Warranty', value: 'Top Notch craftsmanship' },
     ],
     size: 'wide',
     extended: {
@@ -151,10 +151,10 @@ const CARDS: ChapterCard[] = [
 ]
 
 const STATS = [
-  { value: '11', label: 'Studio craftspeople' },
-  { value: '500+', label: 'Frames delivered' },
+  { value: '6', label: 'Studio craftspeople' },
+  { value: '50+', label: 'Frames delivered' },
   { value: '< 0.3%', label: 'Damage rate' },
-  { value: '4.9 / 5', label: 'Verified rating' },
+  { value: '4.5 / 5', label: 'Verified rating' },
 ]
 
 /** Per-card initial offsets so each card flies in from a slightly different angle. */

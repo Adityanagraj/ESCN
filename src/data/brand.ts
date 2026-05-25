@@ -4,6 +4,20 @@ export const BRAND = {
   domain: 'TODO: playboldframes.com',
   supportEmail: 'TODO: care@playboldframes.com',
   supportPhone: 'TODO: +91 80 0000 0000',
+  /**
+   * Business WhatsApp number in international format, digits only.
+   *
+   *   - Country code first, then number, NO + / spaces / dashes / brackets.
+   *   - Example for India 9876543210 → `'919876543210'`.
+   *   - This is what all the "Shop now" buttons and the floating support FAB
+   *     redirect to via wa.me deep links.
+   *
+   * The display name shown to customers when the chat opens ("Playbold X
+   * Shopformost") is configured separately, inside the WhatsApp Business app:
+   *   Settings → Business tools → Business profile → Name.
+   * That name is NOT controlled by this code, so update it there once.
+   */
+  whatsappNumber: '918618262232',
   established: '2024',
   city: 'Bengaluru, India',
   socials: {
@@ -22,7 +36,15 @@ export type Product = {
   tagline: string
   hook: string
   description: string
-  image: string
+  /**
+   * Ordered list of product images. First entry is the hero/cover shot used
+   * everywhere a single thumbnail is needed (compare grid, footer). The full
+   * array drives the product-page gallery + zoom lightbox.
+   *
+   * Drop more shots into `public/products/` and add the paths here. Suggested
+   * angles per frame: front, three-quarter, side/depth, lit-on-the-wall.
+   */
+  images: string[]
   highlights: string[]
   specs: { label: string; value: string }[]
   price: string
@@ -42,7 +64,17 @@ export const PRODUCTS: Product[] = [
     hook: 'It started with a bat, a ball, and a kid who refused to leave the nets after dark. Our first frame is a tribute to the work — not the trophies. Just the cricket.',
     description:
       'A vertical shadow box dedicated to the King. Pairs a mini Genio MRF bat replica with the official RCB crest, a hand-painted action portrait, and a stitched leather ball — all set against a deep matte black panel with soft red LED edge lighting.',
-    image: '/products/king-kohli-frame.png',
+    images: [
+      '/products/king-kohli-frame.png',
+      // TODO: drop 5–6 more angle shots into /public/products and add them here.
+      // See /public/products/README.md for the naming convention + photography guide.
+      // '/products/king-kohli-frame-angle.png',
+      // '/products/king-kohli-frame-detail-bat.png',
+      // '/products/king-kohli-frame-detail-ball.png',
+      // '/products/king-kohli-frame-led-on.png',
+      // '/products/king-kohli-frame-back.png',
+      // '/products/king-kohli-frame-lifestyle.png',
+    ],
     highlights: [
       'Mini MRF bat replica with Virat Kohli signature print',
       'Hand-painted 4-colour action portrait',
@@ -72,7 +104,17 @@ export const PRODUCTS: Product[] = [
     hook: 'Eighteen seasons. One sentence whispered every May. In 2025 it stopped being a joke and started being a fact. This frame is built for the wall where that night gets retold for the next forty years.',
     description:
       'A widescreen tribute to the championship season. Centred around the iconic No. 18 back-jersey portrait, flanked by twin shadow boxes — one cradling the IPL trophy replica, the other a Kohli-signed MRF mini bat. Hand-applied gold foil "18 PLAY BOLD" lettering at the corner.',
-    image: '/products/champions-frame.png',
+    images: [
+      '/products/champions-frame.png',
+      // TODO: drop 5–6 more angle shots into /public/products and add them here.
+      // See /public/products/README.md for the naming convention + photography guide.
+      // '/products/champions-frame-angle.png',
+      // '/products/champions-frame-detail-trophy.png',
+      // '/products/champions-frame-detail-jersey.png',
+      // '/products/champions-frame-led-on.png',
+      // '/products/champions-frame-back.png',
+      // '/products/champions-frame-lifestyle.png',
+    ],
     highlights: [
       '24K-style gold foil "18 PLAY BOLD" hot-stamped lettering',
       'IPL 2025 Champions trophy replica (diecast metal)',
@@ -102,7 +144,17 @@ export const PRODUCTS: Product[] = [
     hook: 'Our largest, loudest piece — a hand-sculpted Kohli bobblehead in full kit, flanked by the trophy and the helmet, wrapped in a glow-up red LED bezel. One wall. One season. One legacy.',
     description:
       'Our flagship piece. A hand-sculpted, hand-painted Kohli bobblehead in full RCB kit takes centre stage, framed by individual showcase compartments for the IPL Champions trophy, the matte-gold RCB helmet, and a signed Genio MRF mini bat. Glow-up red LED bezel wraps the entire frame.',
-    image: '/products/play-bold-frame.png',
+    images: [
+      '/products/play-bold-frame.png',
+      // TODO: drop 5–6 more angle shots into /public/products and add them here.
+      // See /public/products/README.md for the naming convention + photography guide.
+      // '/products/play-bold-frame-angle.png',
+      // '/products/play-bold-frame-detail-bobblehead.png',
+      // '/products/play-bold-frame-detail-helmet.png',
+      // '/products/play-bold-frame-led-modes.png',
+      // '/products/play-bold-frame-back.png',
+      // '/products/play-bold-frame-lifestyle.png',
+    ],
     highlights: [
       'Hand-sculpted polyresin bobblehead with painted-detail kit',
       'Gold-finish RCB helmet replica with branded crest',
