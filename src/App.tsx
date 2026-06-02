@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { LoadingSplash } from './components/LoadingSplash'
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
@@ -6,7 +7,6 @@ import { Marquee } from './components/Marquee'
 import { TrustBand } from './components/TrustBand'
 import { StorySection } from './components/StorySection'
 import { ProductShowcase } from './components/ProductShowcase'
-import { CompareFrames } from './components/CompareFrames'
 import { TrustStrip } from './components/TrustStrip'
 import { Testimonials } from './components/Testimonials'
 import { About } from './components/About'
@@ -32,7 +32,6 @@ function App() {
         <TrustBand />
         <StorySection />
         <ProductShowcase />
-        <CompareFrames />
         <Testimonials />
         <TrustStrip />
         <About />
@@ -52,6 +51,7 @@ function App() {
           <LiveTicker />
         </>
       )}
+    <SpeedInsights />
     </div>
   )
 }

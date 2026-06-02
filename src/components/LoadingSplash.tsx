@@ -15,7 +15,7 @@ export function LoadingSplash({ onDone }: LoadingSplashProps) {
 
   useEffect(() => {
     const start = performance.now()
-    const duration = 1800
+    const duration = 2000
     let raf = 0
     const tick = (now: number) => {
       const t = Math.min(1, (now - start) / duration)
@@ -89,7 +89,7 @@ export function LoadingSplash({ onDone }: LoadingSplashProps) {
               className="flex items-center gap-3 text-xs sm:text-sm tracking-[0.45em] text-rcb-muted uppercase"
             >
               <span className="inline-block w-8 h-px bg-rcb-red" />
-              Loading the legacy
+              For The Loyal Fans Who Never Left
               <span className="inline-block w-8 h-px bg-rcb-red" />
             </motion.div>
 
@@ -117,9 +117,16 @@ export function LoadingSplash({ onDone }: LoadingSplashProps) {
               />
             </div>
 
-            <div className="font-display text-rcb-red tracking-[0.4em] text-sm sm:text-base">
-              PLAY BOLD
-            </div>
+            <img
+              src="/brand/logo.png"
+              alt="ShopforMost X PlayBold"
+              width={420}
+              height={420}
+              decoding="async"
+              fetchPriority="high"
+              className="h-24 sm:h-32 w-auto select-none drop-shadow-[0_4px_24px_rgba(236,28,36,0.45)]"
+              draggable={false}
+            />
           </div>
         </motion.div>
       )}

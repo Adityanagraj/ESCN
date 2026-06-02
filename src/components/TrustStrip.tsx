@@ -1,18 +1,18 @@
-import { BadgeCheck, Lock, ShieldCheck, Undo2 } from 'lucide-react'
+import { BadgeCheck, Lock, ShieldCheck } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { TRUST_BADGES } from '../data/brand'
 import { EASE } from '../lib/motion'
 
-const ICONS = [BadgeCheck, Lock, ShieldCheck, Undo2]
+const ICONS = [BadgeCheck, Lock, ShieldCheck]
 
 export function TrustStrip() {
   return (
     <section
-      aria-label="Why customers trust PLAY BOLD"
+      aria-label="Why customers trust ShopforMost X PlayBold"
       className="relative bg-rcb-bg border-y border-white/5"
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8 py-12 sm:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {TRUST_BADGES.map((b, i) => {
             const Icon = ICONS[i % ICONS.length]
             return (

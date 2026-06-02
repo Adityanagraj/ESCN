@@ -1,12 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Package, X } from 'lucide-react'
 import { SHIPMENTS, type Shipment } from '../data/brand'
 import { EASE } from '../lib/motion'
 
-const APPEAR_DELAY_MS = 7000
-const ROTATE_MS = 5500
+// Genuine, non-robotic cadence: one toast pops in, lingers long enough to read,
+// slides away, then stays GONE for a random stretch before the next one. No
+// fixed rotation, no countdown bar — so it reads like real orders trickling in
+// rather than a clockwork ticker.
+const FIRST_DELAY_MS = [5000, 9000] as const // wait before the very first toast
+const VISIBLE_MS = [4500, 6500] as const // how long each toast stays on screen
+const GAP_MS = [16000, 34000] as const // silent gap between toasts
 const STORAGE_KEY = 'rcb_ticker_dismissed_v1'
+
+function rand(min: number, max: number): number {
+  return Math.floor(min + Math.random() * (max - min))
+}
 
 function formatAgo(min: number): string {
   if (min < 1) return 'just now'
@@ -17,15 +26,13 @@ function formatAgo(min: number): string {
   return `${days} day${days === 1 ? '' : 's'} ago`
 }
 
-function pickShipment(index: number): Shipment {
-  return SHIPMENTS[index % SHIPMENTS.length]
-}
-
 export function LiveTicker() {
   const [mounted, setMounted] = useState(false)
   const [visible, setVisible] = useState(false)
   const [dismissed, setDismissed] = useState(false)
-  const [index, setIndex] = useState(0)
+  const [shipment, setShipment] = useState<Shipment | null>(null)
+  const [agoMin, setAgoMin] = useState(1)
+  const lastIndexRef = useRef(-1)
 
   // Check session-state on mount.
   useEffect(() => {
@@ -39,22 +46,46 @@ export function LiveTicker() {
     setMounted(true)
   }, [])
 
-  // Delayed appear.
+  // Self-scheduling show → hide → wait loop with randomised timing. Each cycle
+  // picks a fresh shipment (never the same one twice in a row) and a fresh
+  // "x min ago", so repeat appearances never look identical.
   useEffect(() => {
     if (!mounted || dismissed) return
-    const id = window.setTimeout(() => setVisible(true), APPEAR_DELAY_MS)
-    return () => window.clearTimeout(id)
-  }, [mounted, dismissed])
 
-  // Rotate entries.
-  useEffect(() => {
-    if (!visible) return
-    const id = window.setInterval(
-      () => setIndex((prev) => (prev + 1) % SHIPMENTS.length),
-      ROTATE_MS
-    )
-    return () => window.clearInterval(id)
-  }, [visible])
+    let timer: number | undefined
+    let cancelled = false
+
+    const pickShipment = (): Shipment => {
+      if (SHIPMENTS.length <= 1) return SHIPMENTS[0]
+      let i = lastIndexRef.current
+      while (i === lastIndexRef.current) {
+        i = Math.floor(Math.random() * SHIPMENTS.length)
+      }
+      lastIndexRef.current = i
+      return SHIPMENTS[i]
+    }
+
+    const show = () => {
+      if (cancelled) return
+      setShipment(pickShipment())
+      setAgoMin(rand(1, 22))
+      setVisible(true)
+      timer = window.setTimeout(hide, rand(VISIBLE_MS[0], VISIBLE_MS[1]))
+    }
+
+    const hide = () => {
+      if (cancelled) return
+      setVisible(false)
+      timer = window.setTimeout(show, rand(GAP_MS[0], GAP_MS[1]))
+    }
+
+    timer = window.setTimeout(show, rand(FIRST_DELAY_MS[0], FIRST_DELAY_MS[1]))
+
+    return () => {
+      cancelled = true
+      if (timer) window.clearTimeout(timer)
+    }
+  }, [mounted, dismissed])
 
   const handleDismiss = () => {
     setVisible(false)
@@ -66,9 +97,7 @@ export function LiveTicker() {
     }
   }
 
-  if (!mounted || dismissed) return null
-
-  const shipment = pickShipment(index)
+  if (!mounted || dismissed || !shipment) return null
 
   return (
     <AnimatePresence>
@@ -123,7 +152,7 @@ export function LiveTicker() {
                     <span className="font-semibold">{shipment.city}</span>
                   </p>
                   <p className="text-[11px] text-rcb-muted mt-0.5">
-                    {formatAgo(shipment.minutesAgo)} · verified order
+                    {formatAgo(agoMin)} · verified order
                   </p>
                 </motion.div>
               </AnimatePresence>
@@ -141,17 +170,6 @@ export function LiveTicker() {
             >
               <X className="w-3.5 h-3.5" />
             </button>
-          </div>
-
-          {/* Progress bar for next rotation */}
-          <div className="h-0.5 bg-white/5 overflow-hidden rounded-b-2xl">
-            <motion.div
-              key={index}
-              initial={{ width: '0%' }}
-              animate={{ width: '100%' }}
-              transition={{ duration: ROTATE_MS / 1000, ease: 'linear' }}
-              className="h-full bg-rcb-red/70"
-            />
           </div>
         </motion.aside>
       )}

@@ -49,14 +49,17 @@ export function Navbar() {
           href="#hero"
           onClick={go('#hero')}
           className="flex items-center gap-2 pl-1 pr-3"
-          aria-label="PLAY BOLD home"
+          aria-label="ShopforMost X PlayBold home"
         >
-          <span className="relative inline-flex items-center justify-center w-7 h-7 rounded-full bg-rcb-red">
-            <span className="font-display text-[11px] tracking-widest text-white">PB</span>
-          </span>
-          <span className="font-display tracking-[0.3em] text-sm sm:text-base text-white">
-            PLAY BOLD
-          </span>
+          <img
+            src="/brand/logo.png"
+            alt="ShopforMost X PlayBold"
+            width={144}
+            height={144}
+            decoding="async"
+            className="h-9 sm:h-10 w-auto select-none drop-shadow-[0_2px_8px_rgba(236,28,36,0.35)]"
+            draggable={false}
+          />
         </a>
 
         <ul className="hidden md:flex items-center gap-1">
@@ -80,7 +83,7 @@ export function Navbar() {
             className="hidden sm:inline-flex items-center gap-2 rounded-full bg-rcb-red px-4 py-2 text-sm font-semibold text-white hover:bg-rcb-red-deep transition-colors"
           >
             <ShoppingBag className="w-4 h-4" />
-            Shop now
+            Shop now or Never
           </a>
           <button
             type="button"
@@ -121,7 +124,7 @@ export function Navbar() {
             className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-rcb-red min-h-[48px] px-4 text-sm font-semibold text-white active:scale-[0.98] transition-transform"
           >
             <ShoppingBag className="w-4 h-4" />
-            Shop now
+            Shop now or Never
           </a>
         </motion.div>
       )}

@@ -50,7 +50,7 @@ const CARDS: ChapterCard[] = [
     eyebrow: 'Origin · 2024',
     title: 'Eleven hands. One workshop. One question.',
     body:
-      'PLAY BOLD started in a 400 sq-ft loft in Indiranagar, with eleven carpenters, illustrators and electronics tinkerers asking the same thing — why does memorabilia worth memorising still look so cheap?',
+      'ShopforMost X PlayBold started in a 400 sq-ft loft in Indiranagar, with eleven carpenters, illustrators and electronics tinkerers asking the same thing — why does memorabilia worth memorising still look so cheap?',
     icon: MapPin,
     meta: [
       { label: 'Est', value: '2024' },
@@ -144,7 +144,6 @@ const CARDS: ChapterCard[] = [
         { label: 'Status', value: 'Independent · fan-run · self-funded' },
         { label: 'Disclaimer', value: 'Unofficial tribute · not licensed RCB merch' },
         { label: 'Warranty', value: '12 months on craftsmanship' },
-        { label: 'Returns', value: '14 days, no questions asked' },
       ],
     },
   },
@@ -561,7 +560,7 @@ export function About() {
           transition={{ duration: 0.7, ease: EASE }}
           className="text-xs tracking-[0.45em] uppercase text-rcb-red text-center"
         >
-          About PLAY BOLD
+          About Us
         </motion.p>
         <motion.h2
           initial={{ y: 24, opacity: 0 }}

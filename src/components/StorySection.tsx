@@ -5,7 +5,7 @@ import { EASE } from '../lib/motion'
 const PARAGRAPHS = [
 "Every RCB fan has something on their wall. A jersey from a memorable season. A fading poster. A moment from Chinnaswamy that still feels louder in your head than it ever did on TV But somehow, the passion never matched the quality.",
     
-"We built PlayBold because the roar from Chinnaswamy deserved something heavier. Something handcrafted. Something worthy of the fans who stayed loyal through every season. ❤️🖤",
+"We built ShopforMost X PlayBold because the roar from Chinnaswamy deserved something heavier. Something handcrafted. Something worthy of the fans who stayed loyal through every season. ❤️🖤",
 "So we spent hundreds of hours designing, sculpting, carving, and hand-painting every piece by hand. No shortcuts. No factory feel. Every artwork is individually numbered, signed off, and made to own one wall yours",
 
 "And maybe… it’s also a subtle reminder to the #WhistleArmy 🔊 and #MIPaltan that loyalty looks better in red and black🔥"

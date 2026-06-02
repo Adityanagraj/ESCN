@@ -44,7 +44,7 @@ export function WhatsappFab() {
       href={buildSupportUrl()}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Chat with PLAY BOLD on WhatsApp"
+      aria-label="Chat with ShopforMost X PlayBold on WhatsApp"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       initial={{ y: 32, opacity: 0, scale: 0.9 }}

@@ -8,7 +8,7 @@ import {
   useTransform,
 } from 'framer-motion'
 import { Minus, Plus } from 'lucide-react'
-import { FAQ } from '../data/brand'
+import { BRAND, FAQ } from '../data/brand'
 import { EASE } from '../lib/motion'
 import { useInteractive } from '../lib/useInteractive'
 
@@ -174,8 +174,8 @@ export function Faq() {
 
         <p className="mt-10 text-center text-sm text-rcb-muted">
           Still have questions? Write to{' '}
-          <a className="text-white underline underline-offset-4 hover:text-rcb-red transition-colors" href="#contact">
-            TODO: care@playboldframes.com
+          <a className="text-white underline underline-offset-4 hover:text-rcb-red transition-colors" href={`mailto:${BRAND.supportEmail}`}>
+            {BRAND.supportEmail}
           </a>{' '}
           — we reply within 12 hours, every day.
         </p>

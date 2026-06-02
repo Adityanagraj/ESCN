@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react'
 import { BRAND, PRODUCTS } from '../data/brand'
 import { MagneticButton } from './MagneticButton'
-import { buildOrderInquiryUrl } from '../lib/whatsapp'
+import { buildOrderInquiryUrl, buildSupportUrl } from '../lib/whatsapp'
 
 function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -10,23 +10,6 @@ function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
       <rect x="3" y="3" width="18" height="18" rx="5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-    </svg>
-  )
-}
-
-function YoutubeIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M22 8.5a3 3 0 0 0-2.1-2.1C18.1 6 12 6 12 6s-6.1 0-7.9.4A3 3 0 0 0 2 8.5 31 31 0 0 0 1.5 12 31 31 0 0 0 2 15.5a3 3 0 0 0 2.1 2.1C5.9 18 12 18 12 18s6.1 0 7.9-.4a3 3 0 0 0 2.1-2.1c.3-1.1.5-2.3.5-3.5s-.2-2.4-.5-3.5Z" />
-      <path d="m10 9.5 5 2.5-5 2.5Z" fill="currentColor" />
-    </svg>
-  )
-}
-
-function TwitterIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117Z" />
     </svg>
   )
 }
@@ -107,13 +90,17 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8 py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-12 gap-10 sm:gap-10">
         {/* Brand */}
         <div className="sm:col-span-3 lg:col-span-5">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-rcb-red">
-              <span className="font-display text-[12px] tracking-widest text-white">PB</span>
-            </span>
-            <span className="font-display tracking-[0.3em] text-lg text-white">
-              {BRAND.name}
-            </span>
+          <div className="flex items-center">
+            <img
+              src="/brand/logo.png"
+              alt={BRAND.name}
+              width={240}
+              height={240}
+              decoding="async"
+              loading="lazy"
+              className="h-16 sm:h-20 w-auto select-none drop-shadow-[0_4px_20px_rgba(236,28,36,0.35)]"
+              draggable={false}
+            />
           </div>
           <p className="mt-4 text-sm text-rcb-muted max-w-md leading-relaxed">
             {BRAND.tagline} — premium, hand-finished RCB tribute frames, built
@@ -121,12 +108,20 @@ export function Footer() {
           </p>
 
           <div className="mt-6 space-y-2 text-sm text-rcb-muted">
-            <p className="inline-flex items-center gap-2">
+            <a
+              href={`mailto:${BRAND.supportEmail}`}
+              className="inline-flex items-center gap-2 hover:text-rcb-red transition-colors"
+            >
               <Mail className="w-4 h-4 text-rcb-gold" /> {BRAND.supportEmail}
-            </p>
-            <p className="inline-flex items-center gap-2">
+            </a>
+            <a
+              href={buildSupportUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-rcb-red transition-colors"
+            >
               <Phone className="w-4 h-4 text-rcb-gold" /> {BRAND.supportPhone}
-            </p>
+            </a>
             <p className="inline-flex items-center gap-2">
               <MapPin className="w-4 h-4 text-rcb-gold" /> Indiranagar Studio, Bengaluru 560038
             </p>
@@ -141,24 +136,6 @@ export function Footer() {
               className="inline-flex w-11 h-11 items-center justify-center rounded-full border border-white/15 text-white/80 hover:text-white hover:border-rcb-red active:scale-95 transition-all"
             >
               <InstagramIcon className="w-4 h-4" />
-            </a>
-            <a
-              href={BRAND.socials.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="YouTube"
-              className="inline-flex w-11 h-11 items-center justify-center rounded-full border border-white/15 text-white/80 hover:text-white hover:border-rcb-red active:scale-95 transition-all"
-            >
-              <YoutubeIcon className="w-4 h-4" />
-            </a>
-            <a
-              href={BRAND.socials.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="X / Twitter"
-              className="inline-flex w-11 h-11 items-center justify-center rounded-full border border-white/15 text-white/80 hover:text-white hover:border-rcb-red active:scale-95 transition-all"
-            >
-              <TwitterIcon className="w-4 h-4" />
             </a>
           </div>
         </div>
@@ -187,9 +164,6 @@ export function Footer() {
           <p className="text-[10px] tracking-[0.35em] uppercase text-rcb-muted">Help</p>
           <ul className="mt-3 sm:mt-4 -mx-2 sm:mx-0">
             <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#faq" onClick={go('#faq')}>FAQ</a></li>
-            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#contact">TODO: Shipping policy</a></li>
-            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#contact">TODO: Returns &amp; refunds</a></li>
-            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#contact">TODO: Order tracking</a></li>
           </ul>
         </div>
 
@@ -198,9 +172,6 @@ export function Footer() {
           <p className="text-[10px] tracking-[0.35em] uppercase text-rcb-muted">Brand</p>
           <ul className="mt-3 sm:mt-4 -mx-2 sm:mx-0">
             <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#about" onClick={go('#about')}>Our story</a></li>
-            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#contact">TODO: Press</a></li>
-            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#contact">TODO: Privacy</a></li>
-            <li><a className="flex items-center min-h-[44px] px-2 sm:px-0 text-sm text-white/85 hover:text-rcb-red active:text-rcb-red transition-colors" href="#contact">TODO: Terms</a></li>
           </ul>
         </div>
       </div>
@@ -214,13 +185,13 @@ export function Footer() {
             <span className="sm:ml-1">Not affiliated with Royal Challengers Bengaluru or the BCCI.</span>
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 tracking-[0.25em] uppercase">
-            <span>Razorpay</span>
+            <span>WhatsApp orders</span>
             <span className="w-px h-3 bg-white/15" />
             <span>UPI</span>
             <span className="w-px h-3 bg-white/15" />
-            <span>Visa</span>
+            <span>Bank transfer</span>
             <span className="w-px h-3 bg-white/15" />
-            <span>Mastercard</span>
+            <span>Partial COD</span>
             <span className="w-px h-3 bg-white/15" />
             <span>Delhivery</span>
           </div>

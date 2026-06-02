@@ -172,7 +172,7 @@ function ProductRow({ product, index }: Props) {
         <span className="font-display text-rcb-red text-xl">
           CH · {String(index + 1).padStart(2, '0')}
         </span>
-        / 03
+        / {String(PRODUCTS.length).padStart(2, '0')}
       </div>
 
       {/* Image column */}
@@ -240,7 +240,7 @@ function ProductRow({ product, index }: Props) {
               )}
             </div>
             <p className="mt-1 text-xs text-rcb-muted">
-              Inclusive of GST. EMI from TODO: ₹ 1,499/mo.
+              Inclusive of GST. Full payment or 50% advance + COD — confirm on WhatsApp.
             </p>
           </div>
 
@@ -259,7 +259,7 @@ function ProductRow({ product, index }: Props) {
               focus:outline-none focus-visible:ring-2 focus-visible:ring-rcb-red focus-visible:ring-offset-2 focus-visible:ring-offset-rcb-bg
             "
           >
-            Shop {product.name.split(' ')[0]}
+            Shop now or Never
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </MagneticButton>
         </div>
@@ -293,7 +293,8 @@ export function ProductShowcase() {
           transition={{ duration: 0.8, ease: easeOut }}
           className="text-xs tracking-[0.45em] uppercase text-rcb-red"
         >
-          The Collection · 03 Frames
+          The Collection · {String(PRODUCTS.length).padStart(2, '0')}{' '}
+          {PRODUCTS.length === 1 ? 'Frame' : 'Frames'}
         </motion.p>
         <motion.h2
           initial={{ y: 26, opacity: 0 }}
@@ -306,9 +307,8 @@ export function ProductShowcase() {
           OWN THE <span className="text-rcb-red">LEGACY</span>
         </motion.h2>
         <p className="mt-5 max-w-2xl text-rcb-muted leading-relaxed">
-          Three pieces. Each one numbered, signed off, and built by hand in our
-          Bengaluru studio. Pick the one that lives on your wall for the next
-          twenty years.
+          Premium collectible frames, made for the wall where your RCB story
+          lives. Pick the one that speaks to you.
         </p>
       </div>
 

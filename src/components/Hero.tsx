@@ -7,7 +7,7 @@ import {
   useSpring,
   useTransform,
 } from 'framer-motion'
-import { HERO_IMAGE } from '../data/brand'
+import { HERO_IMAGE, HERO_IMAGE_MOBILE } from '../data/brand'
 import { EASE } from '../lib/motion'
 import { MagneticButton } from './MagneticButton'
 
@@ -32,7 +32,6 @@ export function Hero() {
     target: sectionRef,
     offset: ['start start', 'end start'],
   })
-  const scrollRotY = useTransform(scrollYProgress, [0, 1], [0, -10])
   const scrollY = useTransform(scrollYProgress, [0, 1], ['0%', '-8%'])
   const scrollScale = useTransform(scrollYProgress, [0, 1], [1, 0.94])
 
@@ -42,11 +41,10 @@ export function Hero() {
   const sx = useSpring(mx, { stiffness: 55, damping: 18, mass: 0.7 })
   const sy = useSpring(my, { stiffness: 55, damping: 18, mass: 0.7 })
 
-  // Figure: meaningful travel + real 3D tilt.
-  const figX = useTransform(sx, [-1, 1], ['-4%', '4%'])
-  const figY = useTransform(sy, [-1, 1], ['-3%', '3%'])
-  const figRotY = useTransform(sx, [-1, 1], [-9, 9])
-  const figRotX = useTransform(sy, [-1, 1], [6, -6])
+  // Banner: subtle parallax drift only — no 3D rotation, which would distort
+  // the baked-in typography on the artwork.
+  const figX = useTransform(sx, [-1, 1], ['-2.5%', '2.5%'])
+  const figY = useTransform(sy, [-1, 1], ['-2%', '2%'])
 
   // Glow drifts opposite to the figure to fake depth.
   const glowX = useTransform(sx, [-1, 1], ['3.5%', '-3.5%'])
@@ -72,11 +70,11 @@ export function Hero() {
       ref={sectionRef}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      aria-label="PLAY BOLD hero"
+      aria-label="ShopforMost X PlayBold hero"
       className="
         rcb-section relative overflow-hidden bg-rcb-bg
-        flex items-end sm:items-center justify-center
-        pt-20 pb-16 sm:pt-0 sm:pb-0
+        flex items-center justify-center
+        pt-24 pb-20 sm:pt-20 sm:pb-16
       "
       style={{ perspective: 1400 }}
     >
@@ -104,58 +102,52 @@ export function Hero() {
       />
 
       {/*
-        Image container.
-        Fixed footprint (capped by both viewport width and viewport height),
-        with the actual <img> set to w-full h-full + object-contain.
-        => image NEVER crops. It just letterboxes inside its box.
+        Banner container.
+        The hero art is a pair of pre-composed banners with baked-in typography:
+        a tall portrait (485×1024) for mobile and a landscape (1024×682) for
+        tablet/desktop. The <picture> below swaps the source at the 640px (sm)
+        breakpoint, and the container's aspect ratio + sizing flip to match so
+        each banner fills its box edge-to-edge with no crop and no letterbox.
+        - Mobile: height-driven (fills the vertical space), aspect 485/1024.
+        - sm+:    width-driven, aspect 1024/682, capped on huge screens.
       */}
       <motion.div
         className="
           relative z-10
-          w-[96vw] h-[68dvh]
-          sm:w-[80vw] sm:h-[80dvh]
-          md:w-[68vw] md:h-[86dvh]
-          lg:w-[58vw] lg:h-[90dvh]
-          max-w-[1100px]
+          h-[74dvh] w-auto max-w-[94vw] aspect-[485/1024]
+          sm:h-auto sm:w-[88vw] sm:max-w-[1200px] sm:aspect-[1024/682]
+          md:w-[80vw] lg:w-[72vw]
         "
         style={
           interactive
-            ? {
-                y: scrollY,
-                scale: scrollScale,
-                rotateY: scrollRotY,
-                transformStyle: 'preserve-3d',
-                transformPerspective: 1400,
-              }
-            : { transformStyle: 'preserve-3d', transformPerspective: 1400 }
+            ? { y: scrollY, scale: scrollScale }
+            : undefined
         }
       >
-        <motion.img
-          src={HERO_IMAGE}
-          alt="Virat Kohli celebrating with the IPL trophy"
-          draggable={false}
-          decoding="async"
-          loading="eager"
-          initial={{ scale: 1.04, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.4, ease: EASE, delay: 0.15 }}
-          style={
-            interactive
-              ? {
-                  x: figX,
-                  y: figY,
-                  rotateX: figRotX,
-                  rotateY: figRotY,
-                  willChange: 'transform',
-                }
-              : undefined
-          }
-          className="
-            absolute inset-0 w-full h-full object-contain
-            pointer-events-none select-none
-            drop-shadow-[0_40px_80px_rgba(236,28,36,0.45)]
-          "
-        />
+        <picture className="absolute inset-0 w-full h-full">
+          <source media="(min-width: 640px)" srcSet={HERO_IMAGE} />
+          <motion.img
+            src={HERO_IMAGE_MOBILE}
+            alt="ShopforMost X PlayBold — your memories, framed forever. Collectible RCB frames that keep the legacy alive."
+            draggable={false}
+            decoding="async"
+            loading="eager"
+            initial={{ scale: 1.04, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.4, ease: EASE, delay: 0.15 }}
+            style={
+              interactive
+                ? { x: figX, y: figY, willChange: 'transform' }
+                : undefined
+            }
+            className="
+              w-full h-full object-contain
+              rounded-xl sm:rounded-2xl
+              pointer-events-none select-none
+              drop-shadow-[0_30px_70px_rgba(236,28,36,0.30)]
+            "
+          />
+        </picture>
       </motion.div>
 
       {/* Scroll cue — magnetic, never crosses the figure */}

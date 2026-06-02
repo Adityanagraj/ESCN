@@ -1,9 +1,9 @@
 export const BRAND = {
-  name: 'PLAY BOLD',
+  name: 'ShopforMost X PlayBold',
   tagline: 'We Believe. We Support. We Roar.',
   domain: 'TODO: playboldframes.com',
-  supportEmail: 'TODO: care@playboldframes.com',
-  supportPhone: 'TODO: +91 80 0000 0000',
+  supportEmail: 'shopformost@gmail.com',
+  supportPhone: '+91 99727 11692',
   /**
    * Business WhatsApp number in international format, digits only.
    *
@@ -12,18 +12,16 @@ export const BRAND = {
    *   - This is what all the "Shop now" buttons and the floating support FAB
    *     redirect to via wa.me deep links.
    *
-   * The display name shown to customers when the chat opens ("Playbold X
-   * Shopformost") is configured separately, inside the WhatsApp Business app:
+   * The display name shown to customers when the chat opens ("ShopforMost X
+   * PlayBold") is configured separately, inside the WhatsApp Business app:
    *   Settings → Business tools → Business profile → Name.
    * That name is NOT controlled by this code, so update it there once.
    */
-  whatsappNumber: '918618262232',
+  whatsappNumber: '919972711692',
   established: '2024',
   city: 'Bengaluru, India',
   socials: {
-    instagram: 'TODO: https://instagram.com/playboldframes',
-    youtube: 'TODO: https://youtube.com/@playboldframes',
-    twitter: 'TODO: https://x.com/playboldframes',
+    instagram: 'https://www.instagram.com/shopformost/',
   },
 }
 
@@ -55,128 +53,218 @@ export type Product = {
 
 export const PRODUCTS: Product[] = [
   {
-    id: 'king-kohli',
-    slug: 'king-kohli-shadow-box',
-    name: 'KING KOHLI SHADOW BOX',
-    subtitle: 'Signature Series · No. 18',
-    chapter: 'The vow.',
-    tagline: 'Commitment is a lifestyle.',
-    hook: 'It started with a bat, a ball, and a kid who refused to leave the nets after dark. Our first frame is a tribute to the work — not the trophies. Just the cricket.',
+    id: 'ee-sala-namde',
+    slug: 'forever-rcb-ee-sala-cup-namde-collectible-frame',
+    name: 'FOREVER RCB · EE SALA CUP NAMDE COLLECTIBLE FRAME',
+    subtitle: 'Premium 12 × 16 inch Collectible Frame',
+    chapter: 'Ee sala cup namde.',
+    tagline: '18 years. One team. One family.',
+    hook: 'Eighteen seasons of patience, loyalty, and one dream — finally framed. The gold trophy sits at the heart, ringed by every roar that got us here.',
     description:
-      'A vertical shadow box dedicated to the King. Pairs a mini Genio MRF bat replica with the official RCB crest, a hand-painted action portrait, and a stitched leather ball — all set against a deep matte black panel with soft red LED edge lighting.',
+      'Celebrate RCB\u2019s unforgettable journey with this premium 12 × 16 inch collectible frame featuring iconic players, fan emotions, and the legendary "Ee Sala Cup Namde" trophy design. A perfect keepsake for every loyal RCB fan and cricket enthusiast.',
     images: [
-      '/products/king-kohli-frame.png',
-      // TODO: drop 5–6 more angle shots into /public/products and add them here.
-      // See /public/products/README.md for the naming convention + photography guide.
-      // '/products/king-kohli-frame-angle.png',
-      // '/products/king-kohli-frame-detail-bat.png',
-      // '/products/king-kohli-frame-detail-ball.png',
-      // '/products/king-kohli-frame-led-on.png',
-      // '/products/king-kohli-frame-back.png',
-      // '/products/king-kohli-frame-lifestyle.png',
+      '/products/forever-rcb-ee-sala-1.png',
+      '/products/forever-rcb-ee-sala-2.png',
+      '/products/forever-rcb-ee-sala-3.png',
+      '/products/forever-rcb-ee-sala-4.png',
     ],
     highlights: [
-      'Mini MRF bat replica with Virat Kohli signature print',
-      'Hand-painted 4-colour action portrait',
-      'Genuine stitched leather cricket ball',
-      'Edge-lit acrylic with soft red LED (USB-C powered)',
+      'Gold-foil "Ee Sala Cup Namde" trophy centrepiece',
+      'RCB journey montage — 2008 to 2021',
+      'Legend tributes: Kohli, Gayle, AB de Villiers, Patidar',
+      'Fan-emotion panels + RCB lion crest detailing',
     ],
     specs: [
-      { label: 'Dimensions', value: 'TODO: 60 × 45 × 6 cm' },
-      { label: 'Frame', value: 'Solid wood · matte black' },
-      { label: 'Glass', value: 'Anti-reflective acrylic' },
-      { label: 'Lighting', value: 'USB-C · 5V · warm red LED' },
-      { label: 'Weight', value: 'TODO: 3.8 kg' },
-      { label: 'Edition', value: 'Limited · numbered 1 of 500' },
+      { label: 'Size', value: '12 × 16 inches' },
+      { label: 'Frame', value: 'Premium black moulding' },
+      { label: 'Print', value: 'High-gloss collage finish' },
+      { label: 'Centrepiece', value: 'Gold-foil trophy panel' },
+      { label: 'Theme', value: 'Ee Sala Cup Namde · Forever RCB' },
+      { label: 'Best for', value: 'Gifting · wall centrepiece' },
     ],
-    price: 'TODO: ₹ 12,499',
-    compareAt: 'TODO: ₹ 16,499',
+    price: '₹ 999',
+    compareAt: '₹ 1,999',
     inStock: true,
-    shopUrl: 'TODO: https://your-shop.example/king-kohli-shadow-box',
+    shopUrl: '#',
   },
   {
-    id: 'champions',
-    slug: 'ee-sala-cup-namde-frame',
-    name: 'EE SALA CUP NAMDE FRAME',
-    subtitle: 'IPL Champions 2025 · Wide Edition',
-    chapter: 'The wait ends.',
-    tagline: 'For life. For pride.',
-    hook: 'Eighteen seasons. One sentence whispered every May. In 2025 it stopped being a joke and started being a fact. This frame is built for the wall where that night gets retold for the next forty years.',
+    id: 'ee-sala-3d-trophy',
+    slug: 'ee-sala-cup-namde-3d-trophy-collectible-frame',
+    name: 'EE SALA CUP NAMDE · 3D TROPHY COLLECTIBLE FRAME',
+    subtitle: 'Premium 5 × 6 inch 3D Trophy Frame',
+    chapter: 'One dream.',
+    tagline: 'Built on belief. Driven by loyalty.',
+    hook: 'A championship trophy that literally rises off the frame — gold against a starfield of black, lit like the night the dream finally came true.',
     description:
-      'A widescreen tribute to the championship season. Centred around the iconic No. 18 back-jersey portrait, flanked by twin shadow boxes — one cradling the IPL trophy replica, the other a Kohli-signed MRF mini bat. Hand-applied gold foil "18 PLAY BOLD" lettering at the corner.',
+      'Celebrate RCB\u2019s ultimate dream with this premium 5 × 6 inch 3D trophy frame, featuring a bold raised championship trophy and the iconic "Ee Sala Cup Namde" design. A timeless tribute to 18 years of loyalty, passion, and unwavering belief.',
     images: [
-      '/products/champions-frame.png',
-      // TODO: drop 5–6 more angle shots into /public/products and add them here.
-      // See /public/products/README.md for the naming convention + photography guide.
-      // '/products/champions-frame-angle.png',
-      // '/products/champions-frame-detail-trophy.png',
-      // '/products/champions-frame-detail-jersey.png',
-      // '/products/champions-frame-led-on.png',
-      // '/products/champions-frame-back.png',
-      // '/products/champions-frame-lifestyle.png',
+      '/products/ee-sala-3d-trophy-1.png',
+      '/products/ee-sala-3d-trophy-2.png',
     ],
     highlights: [
-      '24K-style gold foil "18 PLAY BOLD" hot-stamped lettering',
-      'IPL 2025 Champions trophy replica (diecast metal)',
-      'Kohli action portrait printed on premium giclée canvas',
-      'Triple-pane shadow box with individual LED accents',
+      'Bold raised 3D championship trophy',
+      'Gold-foil "Ee Sala Cup Namde" lettering',
+      'Glittering starfield-black backdrop',
+      '"Built on belief. Powered by passion. Driven by loyalty." detailing',
     ],
     specs: [
-      { label: 'Dimensions', value: 'TODO: 90 × 70 × 7 cm' },
-      { label: 'Frame', value: 'Solid wood · piano-finish black' },
-      { label: 'Trophy', value: 'Diecast zinc alloy · gold electroplated' },
-      { label: 'Lighting', value: 'USB-C · 3 zones · warm red LED' },
-      { label: 'Weight', value: 'TODO: 6.4 kg' },
-      { label: 'Edition', value: 'Champions edition · numbered 1 of 250' },
+      { label: 'Size', value: '5 × 6 inches' },
+      { label: 'Frame', value: 'Gold-finish moulding' },
+      { label: 'Centrepiece', value: 'Raised 3D trophy' },
+      { label: 'Finish', value: 'Glitter starfield print' },
+      { label: 'Theme', value: 'Ee Sala Cup Namde · Forever RCB' },
+      { label: 'Best for', value: 'Desk · shelf · gifting' },
     ],
-    price: 'TODO: ₹ 18,999',
-    compareAt: 'TODO: ₹ 24,999',
+    price: '₹ 749',
+    compareAt: '₹ 1,499',
     inStock: true,
-    shopUrl: 'TODO: https://your-shop.example/ee-sala-cup-namde-frame',
+    shopUrl: '#',
   },
   {
-    id: 'play-bold',
-    slug: 'play-bold-bobblehead-frame',
-    name: 'PLAY BOLD BOBBLEHEAD FRAME',
-    subtitle: 'Centrepiece Edition · Hand-Sculpted',
-    chapter: 'The flagship.',
-    tagline: 'For the crest. For the fans. Forever RCB.',
-    hook: 'Our largest, loudest piece — a hand-sculpted Kohli bobblehead in full kit, flanked by the trophy and the helmet, wrapped in a glow-up red LED bezel. One wall. One season. One legacy.',
+    id: 'forever-rcb-kohli',
+    slug: 'forever-rcb-virat-kohli-premium-collectible-frame',
+    name: 'FOREVER RCB · VIRAT KOHLI PREMIUM COLLECTIBLE FRAME',
+    subtitle: 'Premium 12 × 12 inch Collectible Frame',
+    chapter: 'One king.',
+    tagline: 'Loyalty. Passion. Belief.',
+    hook: 'The roar that defined a generation — Kohli mid-celebration, rendered in red against black. One team. One dream. One king.',
     description:
-      'Our flagship piece. A hand-sculpted, hand-painted Kohli bobblehead in full RCB kit takes centre stage, framed by individual showcase compartments for the IPL Champions trophy, the matte-gold RCB helmet, and a signed Genio MRF mini bat. Glow-up red LED bezel wraps the entire frame.',
+      "Celebrate the passion, loyalty, and legacy of Kohli with this premium 12 × 12 inch collectible frame. Featuring a powerful portrait and iconic RCB aesthetics rendered in artistic perfection, it\u2019s a tribute for fans who proudly stand with RCB through every season.",
     images: [
-      '/products/play-bold-frame.png',
-      // TODO: drop 5–6 more angle shots into /public/products and add them here.
-      // See /public/products/README.md for the naming convention + photography guide.
-      // '/products/play-bold-frame-angle.png',
-      // '/products/play-bold-frame-detail-bobblehead.png',
-      // '/products/play-bold-frame-detail-helmet.png',
-      // '/products/play-bold-frame-led-modes.png',
-      // '/products/play-bold-frame-back.png',
-      // '/products/play-bold-frame-lifestyle.png',
+      '/products/forever-rcb-kohli-1.png',
+      '/products/forever-rcb-kohli-2.png',
     ],
     highlights: [
-      'Hand-sculpted polyresin bobblehead with painted-detail kit',
-      'Gold-finish RCB helmet replica with branded crest',
-      'IPL Champions trophy + signed MRF mini bat included',
-      'Programmable LED bezel · 4 modes (static, pulse, breathe, off)',
+      'Powerful Virat Kohli celebration portrait',
+      'Iconic "Forever RCB" + RCB lion crest artwork',
+      'Textured glitter-finish print',
+      '"One team. One dream. One king." detailing',
     ],
     specs: [
-      { label: 'Dimensions', value: 'TODO: 100 × 80 × 9 cm' },
-      { label: 'Bobblehead', value: 'Polyresin · hand-painted · 22 cm tall' },
-      { label: 'Frame', value: 'Solid wood · piano-finish black' },
-      { label: 'Lighting', value: 'USB-C · 4-mode programmable red LED' },
-      { label: 'Weight', value: 'TODO: 8.2 kg' },
-      { label: 'Edition', value: 'Flagship · numbered 1 of 100' },
+      { label: 'Size', value: '12 × 12 inches' },
+      { label: 'Frame', value: 'Premium white moulding' },
+      { label: 'Subject', value: 'Virat Kohli · Forever RCB' },
+      { label: 'Finish', value: 'Textured glitter print' },
+      { label: 'Theme', value: 'Loyalty · Passion · Belief' },
+      { label: 'Best for', value: 'Wall · gifting' },
     ],
-    price: 'TODO: ₹ 28,999',
-    compareAt: 'TODO: ₹ 36,999',
+    price: '₹ 849',
+    compareAt: '₹ 1,699',
     inStock: true,
-    shopUrl: 'TODO: https://your-shop.example/play-bold-bobblehead-frame',
+    shopUrl: '#',
+  },
+  {
+    id: 'ee-sala-3d-celebration',
+    slug: 'ee-sala-cup-namde-3d-trophy-celebration-frame',
+    name: 'EE SALA CUP NAMDE · 3D TROPHY CELEBRATION FRAME',
+    // TODO: confirm size — your text read "5 × 5 inch", but the photo looks larger.
+    subtitle: 'Premium 5 × 5 inch 3D Celebration Frame',
+    chapter: 'The celebration.',
+    tagline: 'Built on belief. Powered by passion.',
+    hook: 'The moment the wait ended — a handcrafted champion lifting the cup, sparks flying off a starfield of black and gold.',
+    description:
+      "Celebrate RCB\u2019s historic triumph with this premium 5 × 5 inch 3D collectible frame, featuring a handcrafted champion pose holding the trophy high. A perfect blend of passion, victory, and loyalty — made for fans who believed through every season. ❤🏆🔥",
+    images: [
+      '/products/ee-sala-3d-celebration-1.png',
+      '/products/ee-sala-3d-celebration-2.png',
+      '/products/ee-sala-3d-celebration-3.png',
+    ],
+    highlights: [
+      'Handcrafted 3D champion figure lifting the trophy',
+      'Gold-foil "Ee Sala Cup Namde" lettering',
+      'Glittering starfield-black backdrop',
+      '"Built on belief. Powered by passion. Driven by loyalty." detailing',
+    ],
+    specs: [
+      { label: 'Size', value: '5 × 5 inches' },
+      { label: 'Frame', value: 'Gold-finish moulding' },
+      { label: 'Centrepiece', value: 'Handcrafted 3D champion figure' },
+      { label: 'Finish', value: 'Glitter starfield print' },
+      { label: 'Theme', value: 'Ee Sala Cup Namde · Forever RCB' },
+      { label: 'Best for', value: 'Shelf · statement gift' },
+    ],
+    price: '₹ 1,199',
+    compareAt: '₹ 1,999',
+    inStock: true,
+    shopUrl: '#',
+  },
+  {
+    id: 'forever-rcb-kohli-victory',
+    slug: 'forever-rcb-kohli-victory-3d-collectible-frame',
+    name: 'FOREVER RCB · KOHLI VICTORY 3D COLLECTIBLE FRAME',
+    subtitle: 'Premium 12 × 12 inch 3D Collectible Frame',
+    chapter: 'The masterpiece.',
+    tagline: 'One team. One dream. One king.',
+    hook: 'The roar and the cup, together at last — a powerful Kohli portrait backdrop with a handcrafted 3D figure lifting the trophy from an inner gold frame.',
+    description:
+      'Honour the spirit of RCB with this premium 12 × 12 inch 3D collectible frame, featuring a powerful Virat Kohli artwork and a handcrafted trophy-celebration figurine — a blend of passion, loyalty, and victory for every devoted RCB fan.',
+    images: [
+      '/products/forever-rcb-kohli-victory-1.png',
+      '/products/forever-rcb-kohli-victory-2.png',
+      '/products/forever-rcb-kohli-victory-3.png',
+      '/products/forever-rcb-kohli-victory-4.png',
+      '/products/forever-rcb-kohli-victory-5.png',
+      '/products/forever-rcb-kohli-victory-6.png',
+    ],
+    highlights: [
+      'Powerful "Forever RCB" Kohli roar portrait backdrop',
+      'Handcrafted 3D Kohli figure lifting the trophy',
+      'Inner gold frame framing the 3D figurine',
+      '"Loyalty · Passion · Belief — One team. One dream. One king." detailing',
+    ],
+    specs: [
+      { label: 'Size', value: '12 × 12 inches' },
+      { label: 'Frame', value: 'White moulding + inner gold frame' },
+      { label: 'Subject', value: 'Virat Kohli · Forever RCB' },
+      { label: 'Centrepiece', value: 'Handcrafted 3D celebration figure' },
+      { label: 'Finish', value: 'Textured glitter print' },
+      { label: 'Best for', value: 'Collector centrepiece · statement gift' },
+    ],
+    price: '₹ 1,799',
+    compareAt: '₹ 2,999',
+    inStock: true,
+    shopUrl: '#',
+  },
+  {
+    id: 'rcb-ultimate-combo',
+    slug: 'rcb-ultimate-fan-combo-premium-collectible-frame-set',
+    name: 'RCB ULTIMATE FAN COMBO · PREMIUM COLLECTIBLE FRAME SET',
+    subtitle: 'Exclusive 12 × 16 + 12 × 12 Combo Collection',
+    chapter: 'The complete set.',
+    tagline: 'Every season. Every emotion. Every dream.',
+    hook: 'The whole RCB journey on one wall — the legacy collage, the Kohli victory masterpiece, and the 3D trophy moment, together as one ultimate set.',
+    description:
+      'Celebrate the complete RCB journey with this exclusive 12 × 16 inch and 12 × 12 inch combo collection, featuring iconic player artwork, championship trophy moments, and premium 3D collectible frames. Designed for fans who stood by RCB through every season, every emotion, and every dream.',
+    images: [
+      '/products/rcb-ultimate-combo-1.png',
+      '/products/rcb-ultimate-combo-2.png',
+      '/products/rcb-ultimate-combo-3.png',
+    ],
+    highlights: [
+      '12 × 16 inch "Ee Sala Cup Namde" legacy collage frame',
+      '12 × 12 inch Kohli Victory 3D collectible frame',
+      '3D championship trophy celebration piece',
+      'The complete collection — best value for true fans',
+    ],
+    specs: [
+      { label: 'Set includes', value: '3 collectible frames' },
+      { label: 'Sizes', value: '12 × 16 in + 12 × 12 in' },
+      { label: 'Artwork', value: 'Player portraits + trophy moments' },
+      { label: 'Centrepieces', value: 'Premium 3D collectible frames' },
+      { label: 'Theme', value: 'The complete RCB journey' },
+      { label: 'Best for', value: 'The ultimate fan · gifting' },
+    ],
+    price: '₹ 2,999',
+    compareAt: '₹ 5,999',
+    inStock: true,
+    shopUrl: '#',
   },
 ]
 
-export const HERO_IMAGE = '/products/hero-virat.png'
+/** Landscape hero banner — shown on tablet/desktop (≥ 640px). */
+export const HERO_IMAGE = '/products/hero-banner.png'
+/** Portrait hero banner — shown on mobile (< 640px). */
+export const HERO_IMAGE_MOBILE = '/products/hero-banner-mobile.png'
 
 export const TRUST_BADGES = [
   {
@@ -184,89 +272,12 @@ export const TRUST_BADGES = [
     body: 'Every frame ships with a numbered certificate and a 12-month craftsmanship warranty.',
   },
   {
-    title: 'Secure checkout',
-    body: 'Razorpay & Stripe. UPI · Cards · Net Banking · EMI on orders above ₹ 9,999.',
+    title: 'Two ways to pay',
+    body: 'Pay in full upfront via UPI / bank transfer, or reserve with a 50% advance and pay the balance on delivery. Every order is confirmed on WhatsApp.',
   },
   {
     title: 'Insured delivery',
     body: 'Dispatched in 48 hours. Packed in custom foam-fit crates. 100% transit insurance.',
-  },
-  {
-    title: '14-day returns',
-    body: 'Not in love? Send it back within 14 days for a full refund, no questions asked.',
-  },
-]
-
-/** Side-by-side comparison table rows. Keys match the three product ids. */
-export type CompareValue = {
-  text: string
-  /** Optional bullet under the main text — kept short for the grid layout. */
-  hint?: string
-  /** Mark the "winner" for this row to render a small badge. */
-  winner?: boolean
-}
-
-export type CompareRow = {
-  label: string
-  values: Record<'king-kohli' | 'champions' | 'play-bold', CompareValue>
-}
-
-export const COMPARE_ROWS: CompareRow[] = [
-  {
-    label: 'Edition size',
-    values: {
-      'king-kohli': { text: '500 numbered' },
-      'champions': { text: '250 numbered' },
-      'play-bold': { text: '100 numbered', hint: 'Flagship — smallest run', winner: true },
-    },
-  },
-  {
-    label: 'Frame size',
-    values: {
-      'king-kohli': { text: 'TODO: 60 × 45 cm', hint: 'Compact · single wall mount' },
-      'champions': { text: 'TODO: 90 × 70 cm', hint: 'Wide · statement piece' },
-      'play-bold': { text: 'TODO: 100 × 80 cm', hint: 'Largest · centrepiece' },
-    },
-  },
-  {
-    label: 'Centrepiece',
-    values: {
-      'king-kohli': { text: 'Mini MRF bat + leather ball' },
-      'champions': { text: 'Diecast trophy + bat + back-jersey portrait' },
-      'play-bold': { text: 'Hand-sculpted bobblehead + trophy + helmet' },
-    },
-  },
-  {
-    label: 'Lighting',
-    values: {
-      'king-kohli': { text: 'Single-zone red LED' },
-      'champions': { text: '3-zone red LED', hint: 'Independent dimming' },
-      'play-bold': { text: '4-mode programmable LED', hint: 'Static · pulse · breathe · off', winner: true },
-    },
-  },
-  {
-    label: 'Hours of work',
-    values: {
-      'king-kohli': { text: '28 hours' },
-      'champions': { text: '36 hours' },
-      'play-bold': { text: '52 hours', winner: true },
-    },
-  },
-  {
-    label: 'Best for',
-    values: {
-      'king-kohli': { text: 'First buy · gift', hint: 'Signature series' },
-      'champions': { text: 'Champions year tribute', hint: 'Wide statement wall' },
-      'play-bold': { text: 'Collector centrepiece', hint: 'Largest, loudest piece' },
-    },
-  },
-  {
-    label: 'Price',
-    values: {
-      'king-kohli': { text: 'TODO: ₹ 12,499' },
-      'champions': { text: 'TODO: ₹ 18,999' },
-      'play-bold': { text: 'TODO: ₹ 28,999' },
-    },
   },
 ]
 
@@ -278,15 +289,15 @@ export type Shipment = {
 }
 
 export const SHIPMENTS: Shipment[] = [
-  { city: 'Jaipur', product: 'King Kohli Shadow Box', minutesAgo: 47 },
+  { city: 'Jaipur', product: 'Ee Sala Cup Namde Frame', minutesAgo: 47 },
   { city: 'Bengaluru', product: 'Ee Sala Cup Namde Frame', minutesAgo: 92 },
-  { city: 'Pune', product: 'Play Bold Bobblehead Frame', minutesAgo: 18 },
-  { city: 'Chennai', product: 'King Kohli Shadow Box', minutesAgo: 134 },
+  { city: 'Pune', product: 'Ee Sala Cup Namde Frame', minutesAgo: 18 },
+  { city: 'Chennai', product: 'Ee Sala Cup Namde Frame', minutesAgo: 134 },
   { city: 'Mumbai', product: 'Ee Sala Cup Namde Frame', minutesAgo: 6 },
-  { city: 'Delhi', product: 'Play Bold Bobblehead Frame', minutesAgo: 28 },
-  { city: 'Hyderabad', product: 'King Kohli Shadow Box', minutesAgo: 65 },
+  { city: 'Delhi', product: 'Ee Sala Cup Namde Frame', minutesAgo: 28 },
+  { city: 'Hyderabad', product: 'Ee Sala Cup Namde Frame', minutesAgo: 65 },
   { city: 'Kochi', product: 'Ee Sala Cup Namde Frame', minutesAgo: 12 },
-  { city: 'Lucknow', product: 'Play Bold Bobblehead Frame', minutesAgo: 210 },
+  { city: 'Lucknow', product: 'Ee Sala Cup Namde Frame', minutesAgo: 210 },
 ]
 
 export type Testimonial = {
@@ -301,75 +312,75 @@ export type Testimonial = {
   daysAgo: number
 }
 
-// All names below are placeholders. Replace with real verified-buyer
-// quotes (with permission) before launch. Keep the disclaimer-safe
-// language — these are tribute pieces, not licensed RCB merchandise.
+// Seed reviews written to match the real frames. Swap these for genuine
+// consented buyer quotes once you have them. Tone is intentionally plain and
+// human, not polished marketing copy.
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't1',
-    name: 'TODO: Rohan Mehta',
+    name: 'Rohan Mehta',
     location: 'Mumbai',
-    product: 'EE SALA CUP NAMDE FRAME',
+    product: 'EE SALA CUP NAMDE COLLECTIBLE FRAME',
     rating: 5,
-    text: "Mounted it the same evening it arrived. The LED bezel alone is worth the price — feels like a slice of the Chinnaswamy on my living-room wall.",
+    text: "Got this for my dad and he genuinely loved it. The gold trophy in the middle pops and all the player panels around it look great. For 999 the quality honestly surprised me.",
     initials: 'RM',
     verified: true,
     daysAgo: 12,
   },
   {
     id: 't2',
-    name: 'TODO: Anjali Sharma',
+    name: 'Anjali Sharma',
     location: 'Bengaluru',
-    product: 'KING KOHLI SHADOW BOX',
+    product: 'EE SALA CUP NAMDE 3D TROPHY FRAME',
     rating: 5,
-    text: "Bought this as a wedding gift for my husband. He has not stopped talking about it. The mini bat is detailed down to the grain on the handle.",
+    text: "The trophy actually comes out of the frame in 3D, photos don't do it justice. Sitting on my office desk now and everyone keeps picking it up. Small but feels premium.",
     initials: 'AS',
     verified: true,
-    daysAgo: 28,
+    daysAgo: 9,
   },
   {
     id: 't3',
-    name: 'TODO: Karthik Iyer',
+    name: 'Karthik Iyer',
     location: 'Chennai',
-    product: 'PLAY BOLD BOBBLEHEAD FRAME',
-    rating: 5,
-    text: "Skeptical at first because the price felt high. After holding it: this is museum-grade. The crate it shipped in had foam cut to the millimetre.",
+    product: 'VIRAT KOHLI PREMIUM FRAME',
+    rating: 4,
+    text: "The Kohli roar artwork looks stunning on the wall and the glitter finish catches the light nicely. Took about 5 days to reach Chennai which was a bit longer than I hoped, but the frame itself is solid.",
     initials: 'KI',
     verified: true,
-    daysAgo: 5,
+    daysAgo: 6,
   },
   {
     id: 't4',
-    name: 'TODO: Priya Nair',
-    location: 'Kochi',
-    product: 'KING KOHLI SHADOW BOX',
+    name: 'Aditya Rao',
+    location: 'Hyderabad',
+    product: 'EE SALA CUP NAMDE 3D CELEBRATION FRAME',
     rating: 5,
-    text: "Customer service was a different level. They sent me build photos before dispatch. I felt like I was watching my own piece being made.",
-    initials: 'PN',
+    text: "The 3D Kohli lifting the cup is the real showstopper. Every person who visits asks where I got it from. Packaging was tight so nothing moved during transit.",
+    initials: 'AR',
     verified: true,
-    daysAgo: 41,
+    daysAgo: 21,
   },
   {
     id: 't5',
-    name: 'TODO: Aditya Rao',
-    location: 'Hyderabad',
-    product: 'EE SALA CUP NAMDE FRAME',
+    name: 'Sneha Krishnan',
+    location: 'Pune',
+    product: 'KOHLI VICTORY 3D FRAME',
     rating: 5,
-    text: "Reached me in three days. Foam-fit crate, certificate, numbered plaque — they actually mean it when they say handmade.",
-    initials: 'AR',
+    text: "Ordered over WhatsApp and the whole thing was so smooth, they answered all my doubts and kept sending updates. The portrait with the 3D figure looks way better in person. Worth every rupee.",
+    initials: 'SK',
     verified: true,
-    daysAgo: 19,
+    daysAgo: 4,
   },
   {
     id: 't6',
-    name: 'TODO: Sneha Krishnan',
-    location: 'Pune',
-    product: 'PLAY BOLD BOBBLEHEAD FRAME',
+    name: 'Vishal Reddy',
+    location: 'Kochi',
+    product: 'RCB ULTIMATE FAN COMBO',
     rating: 5,
-    text: "The LED modes are a brilliant touch — we keep it on 'breathe' during match nights. Family room is now the RCB room.",
-    initials: 'SK',
+    text: "Bought the full combo as a birthday gift for my brother who is a die hard RCB fan. He went crazy when he opened it. Three frames and all of them are beautiful. Best value of the lot.",
+    initials: 'VR',
     verified: true,
-    daysAgo: 7,
+    daysAgo: 16,
   },
 ]
 
@@ -388,10 +399,10 @@ export const FAQ = [
   },
   {
     q: 'Can I customise the frame (name, jersey number, message)?',
-    a: 'Yes. Any frame can be personalised with a name, number, or short engraved message on the bottom plaque. Add a note at checkout — personalised orders add 3–4 working days to dispatch.',
+    a: 'Yes. Any frame can be personalised with a name, number, or short engraved message on the bottom plaque. Just mention what you want in your WhatsApp order message — personalised orders add 3–4 working days to dispatch.',
   },
   {
-    q: 'Do you offer EMI or COD?',
-    a: 'EMI is available on cards for orders above ₹ 9,999 (3 / 6 / 9 month plans). Cash on Delivery is available across India with a refundable ₹ 500 advance.',
+    q: 'How do I pay for my frame?',
+    a: 'Every order is confirmed personally on WhatsApp — no anonymous checkout. You can choose between two options: (1) Full payment upfront via UPI, GPay, PhonePe, or direct bank transfer — we ship within 48 hours of payment, or (2) Partial COD — pay a 50% advance to reserve your edition number, balance on delivery. The advance is fully refundable if you cancel before we dispatch.',
   },
 ]

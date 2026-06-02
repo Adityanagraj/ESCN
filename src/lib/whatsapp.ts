@@ -52,7 +52,7 @@ function buildWhatsappUrl(message: string): string {
  */
 export function buildOrderInquiryUrl(product: Product): string {
   const message = [
-    `Hi PLAY BOLD team 👋`,
+    `Hi ShopforMost X PlayBold team 👋`,
     ``,
     `I'd like to enquire about ordering this frame:`,
     ``,
@@ -60,7 +60,11 @@ export function buildOrderInquiryUrl(product: Product): string {
     `• ${product.subtitle}`,
     `• Price: ${product.price}`,
     ``,
-    `Could you please confirm availability, shipping timeline to my city, and the available payment options (UPI / card / EMI / COD)?`,
+    `Could you please confirm availability and shipping timeline to my city?`,
+    ``,
+    `Payment preference (please tick one):`,
+    `( ) Full payment upfront (UPI / bank transfer)`,
+    `( ) 50% advance now + balance on delivery`,
     ``,
     `Thanks!`,
   ].join('\n')
@@ -74,7 +78,7 @@ export function buildOrderInquiryUrl(product: Product): string {
  * the footer contact link.
  */
 export function buildSupportUrl(context?: string): string {
-  const lines = [`Hi PLAY BOLD team 👋`, ``]
+  const lines = [`Hi ShopforMost X PlayBold team 👋`, ``]
   if (context) {
     lines.push(`I have a question about ${context}.`, ``)
   } else {
