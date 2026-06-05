@@ -7,7 +7,7 @@ import {
   useSpring,
   useTransform,
 } from 'framer-motion'
-import { HERO_IMAGE, HERO_IMAGE_MOBILE } from '../data/brand'
+import { HERO_IMAGE } from '../data/brand'
 import { EASE } from '../lib/motion'
 import { MagneticButton } from './MagneticButton'
 
@@ -72,9 +72,9 @@ export function Hero() {
       onMouseLeave={onLeave}
       aria-label="ShopforMost X PlayBold hero"
       className="
-        rcb-section relative overflow-hidden bg-rcb-bg
+        relative overflow-hidden bg-rcb-bg
         flex items-center justify-center
-        pt-24 pb-20 sm:pt-20 sm:pb-16
+        pt-24 pb-16 sm:pt-24 sm:pb-20
       "
       style={{ perspective: 1400 }}
     >
@@ -102,52 +102,40 @@ export function Hero() {
       />
 
       {/*
-        Banner container.
-        The hero art is a pair of pre-composed banners with baked-in typography:
-        a tall portrait (485×1024) for mobile and a landscape (1024×682) for
-        tablet/desktop. The <picture> below swaps the source at the 640px (sm)
-        breakpoint, and the container's aspect ratio + sizing flip to match so
-        each banner fills its box edge-to-edge with no crop and no letterbox.
-        - Mobile: height-driven (fills the vertical space), aspect 485/1024.
-        - sm+:    width-driven, aspect 1024/682, capped on huge screens.
+        Banner.
+        A single square (1024×1024) pre-composed banner with baked-in
+        typography, used at every breakpoint. The image drives the layout so the
+        section hugs it exactly — no letterbox, no gaps, and no viewport-height
+        dependency (which is what caused the scroll "shake" on mobile).
+        - Mobile: width-driven (fills the column edge-to-edge).
+        - sm+:    height-driven and centred, capped so it never gets huge.
       */}
       <motion.div
         className="
           relative z-10
-          h-[74dvh] w-auto max-w-[94vw] aspect-[485/1024]
-          sm:h-auto sm:w-[88vw] sm:max-w-[1200px] sm:aspect-[1024/682]
-          md:w-[80vw] lg:w-[72vw]
+          w-full max-w-[560px] sm:w-auto sm:max-w-none
+          flex items-center justify-center
         "
-        style={
-          interactive
-            ? { y: scrollY, scale: scrollScale }
-            : undefined
-        }
+        style={interactive ? { y: scrollY, scale: scrollScale } : undefined}
       >
-        <picture className="absolute inset-0 w-full h-full">
-          <source media="(min-width: 640px)" srcSet={HERO_IMAGE} />
-          <motion.img
-            src={HERO_IMAGE_MOBILE}
-            alt="ShopforMost X PlayBold — your memories, framed forever. Collectible RCB frames that keep the legacy alive."
-            draggable={false}
-            decoding="async"
-            loading="eager"
-            initial={{ scale: 1.04, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.4, ease: EASE, delay: 0.15 }}
-            style={
-              interactive
-                ? { x: figX, y: figY, willChange: 'transform' }
-                : undefined
-            }
-            className="
-              w-full h-full object-contain
-              rounded-xl sm:rounded-2xl
-              pointer-events-none select-none
-              drop-shadow-[0_30px_70px_rgba(236,28,36,0.30)]
-            "
-          />
-        </picture>
+        <motion.img
+          src={HERO_IMAGE}
+          alt="ShopforMost X PlayBold — your memories, framed forever. Collectible RCB frames that keep the legacy alive."
+          draggable={false}
+          decoding="async"
+          loading="eager"
+          fetchPriority="high"
+          initial={{ scale: 1.04, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.4, ease: EASE, delay: 0.15 }}
+          style={interactive ? { x: figX, y: figY, willChange: 'transform' } : undefined}
+          className="
+            block w-full h-auto sm:w-auto sm:h-[clamp(440px,78vh,800px)]
+            rounded-xl sm:rounded-2xl
+            pointer-events-none select-none
+            drop-shadow-[0_30px_70px_rgba(236,28,36,0.30)]
+          "
+        />
       </motion.div>
 
       {/* Scroll cue — magnetic, never crosses the figure */}
@@ -158,14 +146,14 @@ export function Hero() {
         className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 z-20"
       >
         <MagneticButton
-          href="#story"
+          href="#shop"
           onClick={(e) => {
             e.preventDefault()
             document
-              .getElementById('story')
+              .getElementById('shop')
               ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
           }}
-          aria-label="Scroll to story"
+          aria-label="Scroll to products"
           strength={0.4}
           reach={2}
           className="

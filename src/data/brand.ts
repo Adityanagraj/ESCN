@@ -262,9 +262,9 @@ export const PRODUCTS: Product[] = [
 ]
 
 /** Landscape hero banner — shown on tablet/desktop (≥ 640px). */
-export const HERO_IMAGE = '/products/hero-banner.png'
-/** Portrait hero banner — shown on mobile (< 640px). */
-export const HERO_IMAGE_MOBILE = '/products/hero-banner-mobile.png'
+/** Single square (1024×1024) hero banner with baked-in typography, used at
+ *  every breakpoint. The hero sizes itself to this image so there are no gaps. */
+export const HERO_IMAGE = '/products/hero.png'
 
 export const TRUST_BADGES = [
   {

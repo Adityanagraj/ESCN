@@ -58,19 +58,21 @@ export function ProductGallery({ images, alt, editionTag }: Props) {
 
         <div
           className="
-            relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[5/4]
+            relative
             w-full overflow-hidden rounded-3xl border border-white/10
             bg-rcb-surface
             group
           "
         >
-          {/* The cover image — clickable to zoom */}
+          {/* The cover image — clickable to zoom. The image defines the card
+              height at its natural aspect ratio (portrait frames render tall,
+              landscape combo shots render short) so there are no empty bands. */}
           <button
             type="button"
             onClick={() => setLightboxOpen(true)}
             aria-label={`Open ${alt} gallery — image ${index + 1} of ${images.length}`}
             className="
-              absolute inset-0 cursor-zoom-in
+              relative block w-full cursor-zoom-in
               focus:outline-none
               focus-visible:ring-2 focus-visible:ring-rcb-red focus-visible:ring-offset-2 focus-visible:ring-offset-rcb-bg
             "
@@ -81,10 +83,10 @@ export function ProductGallery({ images, alt, editionTag }: Props) {
               alt={alt}
               loading="lazy"
               draggable={false}
-              initial={{ opacity: 0, scale: 1.02 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, ease: EASE }}
-              className="absolute inset-0 w-full h-full object-contain p-6 sm:p-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.45, ease: EASE }}
+              className="block w-full h-auto sm:max-h-[600px] object-contain mx-auto p-3 sm:p-6"
             />
           </button>
 
@@ -232,7 +234,7 @@ function GalleryArrow({
         'w-10 h-10 inline-flex items-center justify-center',
         'rounded-full border border-white/15 bg-black/45 backdrop-blur',
         'text-white/85 hover:bg-black/65 active:scale-95',
-        'opacity-0 group-hover:opacity-100 sm:opacity-100',
+        'opacity-100',
         'transition-opacity duration-200',
         'focus:outline-none focus-visible:ring-2 focus-visible:ring-rcb-red',
       ].join(' ')}

@@ -29,9 +29,9 @@ function App() {
       <main id="main" className={ready ? 'opacity-100 transition-opacity duration-500' : 'opacity-0'}>
         <Hero />
         <Marquee />
+        <ProductShowcase />
         <TrustBand />
         <StorySection />
-        <ProductShowcase />
         <Testimonials />
         <TrustStrip />
         <About />
