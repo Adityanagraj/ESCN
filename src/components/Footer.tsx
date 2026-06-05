@@ -123,7 +123,7 @@ export function Footer() {
               <Phone className="w-4 h-4 text-rcb-gold" /> {BRAND.supportPhone}
             </a>
             <p className="inline-flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-rcb-gold" /> Indiranagar Studio, Bengaluru 560038
+              <MapPin className="w-4 h-4 text-rcb-gold" /> Koramangala Studio, Bengaluru 560034
             </p>
           </div>
 

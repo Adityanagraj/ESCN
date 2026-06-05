@@ -17,9 +17,7 @@ const easeOut = EASE
 /**
  * Glassy collapsible that hides the long-form story + specs behind a single
  * tap, keeping the visible card to name / chapter / one-liner only.
- *
- * Default-open for the first product so the pattern is discoverable on land;
- * subsequent products stay collapsed for a clean scroll.
+ * Collapsed by default; opens only when the user taps it.
  */
 function ProductDetailsAccordion({
   product,
@@ -221,7 +219,7 @@ function ProductRow({ product, index }: Props) {
           &ldquo;{product.tagline}&rdquo;
         </p>
 
-        <ProductDetailsAccordion product={product} defaultOpen={index === 0} />
+        <ProductDetailsAccordion product={product} />
 
         {/* Price + CTA */}
         <div className="mt-8 flex flex-col sm:flex-row sm:items-end gap-5 sm:gap-6">

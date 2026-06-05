@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import {
-  AnimatePresence,
   motion,
   useInView,
   useMotionTemplate,
@@ -12,16 +11,13 @@ import {
 } from 'framer-motion'
 import { useInteractive } from '../lib/useInteractive'
 import {
-  ArrowUpRight,
   Box,
   Clock,
   Hammer,
   Heart,
   MapPin,
-  Plus,
   Quote,
   Sparkles,
-  X,
 } from 'lucide-react'
 import { EASE } from '../lib/motion'
 
@@ -48,14 +44,14 @@ const CARDS: ChapterCard[] = [
   {
     id: 'origin',
     eyebrow: 'Origin · 2024',
-    title: 'Eleven hands. One workshop. One question.',
+    title: 'Four hands. One workshop. One question.',
     body:
-      'ShopforMost X PlayBold started in a 400 sq-ft loft in Indiranagar, with eleven carpenters, illustrators and electronics tinkerers asking the same thing — why does memorabilia worth memorising still look so cheap?',
+      'ShopforMost X PlayBold started in a 400 sq-ft loft in Koramangala, with four carpenters, illustrators and electronics tinkerers asking the same thing — why does memorabilia worth memorising still look so cheap?',
     icon: MapPin,
     meta: [
       { label: 'Est', value: '2024' },
-      { label: 'Studio', value: 'Indiranagar' },
-      { label: 'Team', value: '11 craftspeople' },
+      { label: 'Studio', value: 'Koramangala' },
+      { label: 'Team', value: '4 craftspeople' },
     ],
     size: 'wide',
     extended: {
@@ -63,12 +59,12 @@ const CARDS: ChapterCard[] = [
       paragraphs: [
         'It was supposed to be a one-off — a hand-built tribute frame for a cousin who had spent eighteen years cheering for a team that kept breaking his heart. Three weekends in a Bengaluru car park. Two rebuilds. One broken LED strip.',
         'When we hung it on his wall, his three-year-old daughter pointed at the figurine and said, “Virat uncle.” That was the moment this stopped being a side project.',
-        'We rented a 400 sq-ft loft on a quiet road in Indiranagar, bought a band saw on credit, and started building. A year later, eleven of us share the same workshop — and the same belief that this team deserves something heavier than a poster.',
+        'We rented a 400 sq-ft loft on a quiet road in Koramangala, bought a band saw on credit, and started building. A year later, four of us share the same workshop — and the same belief that this team deserves something heavier than a poster.',
       ],
       facts: [
         { label: 'Founded', value: '2024' },
-        { label: 'Address', value: 'Indiranagar, Bengaluru' },
-        { label: 'Team', value: '11 craftspeople, all full-time' },
+        { label: 'Address', value: 'Koramangala, Bengaluru' },
+        { label: 'Team', value: '4 craftspeople, all full-time' },
         { label: 'Tools', value: 'Hand-cut · hand-painted · hand-wired' },
       ],
     },
@@ -150,7 +146,7 @@ const CARDS: ChapterCard[] = [
 ]
 
 const STATS = [
-  { value: '6', label: 'Studio craftspeople' },
+  { value: '4', label: 'Studio craftspeople' },
   { value: '50+', label: 'Frames delivered' },
   { value: '< 0.3%', label: 'Damage rate' },
   { value: '4.5 / 5', label: 'Verified rating' },
@@ -164,178 +160,14 @@ const DEAL_VARIANTS = [
   { rotate: 11, x: 55, y: 55 },
 ]
 
-function CardDetailDialog({
-  card,
-  index,
-  onClose,
-}: {
-  card: ChapterCard
-  index: number
-  onClose: () => void
-}) {
-  // Lock body scroll while open + close on ESC.
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-    }
-    window.addEventListener('keydown', onKey)
-    const prev = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => {
-      window.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prev
-    }
-  }, [onClose])
-
-  const Icon = card.icon
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.25 }}
-      className="fixed inset-0 z-[150] flex items-end sm:items-center justify-center p-4 sm:p-6"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={`chapter-${card.id}-title`}
-    >
-      {/* Backdrop */}
-      <button
-        type="button"
-        aria-label="Close"
-        onClick={onClose}
-        className="absolute inset-0 bg-black/70 backdrop-blur-md"
-      />
-
-      {/* Panel */}
-      <motion.div
-        initial={{ y: 60, opacity: 0, scale: 0.97 }}
-        animate={{ y: 0, opacity: 1, scale: 1 }}
-        exit={{ y: 40, opacity: 0, scale: 0.98 }}
-        transition={{ type: 'spring', stiffness: 130, damping: 18, mass: 0.7 }}
-        className="
-          relative w-full sm:max-w-2xl
-          max-h-[88dvh] overflow-y-auto
-          rounded-3xl border border-white/10
-          bg-rcb-bg/95 backdrop-blur-xl
-          shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)]
-        "
-      >
-        {/* Ghost numeral */}
-        <span
-          aria-hidden
-          className="
-            pointer-events-none select-none absolute -top-3 -right-2
-            font-display leading-none tracking-tight text-white/[0.05]
-          "
-          style={{ fontSize: 'clamp(7rem, 18vw, 13rem)' }}
-        >
-          {String(index + 1).padStart(2, '0')}
-        </span>
-
-        {/* Close button */}
-        <button
-          type="button"
-          onClick={onClose}
-          aria-label="Close chapter"
-          className="
-            absolute top-4 right-4 z-10 inline-flex w-9 h-9 items-center justify-center
-            rounded-full border border-white/10 bg-white/[0.04] text-white/70
-            hover:bg-white/[0.08] hover:text-white transition-colors
-            focus:outline-none focus-visible:ring-2 focus-visible:ring-rcb-red
-          "
-        >
-          <X className="w-4 h-4" />
-        </button>
-
-        <div className="relative z-[1] p-6 sm:p-10">
-          <div className="flex items-center gap-3 text-xs tracking-[0.4em] uppercase text-rcb-red">
-            <span className="inline-flex w-7 h-7 items-center justify-center rounded-full bg-rcb-red/15">
-              <Icon className="w-3.5 h-3.5" />
-            </span>
-            {card.eyebrow}
-          </div>
-
-          <h3
-            id={`chapter-${card.id}-title`}
-            className="mt-5 font-display tracking-tight text-white leading-[0.96]"
-            style={{ fontSize: 'clamp(1.75rem, 4.5vw, 2.75rem)' }}
-          >
-            {card.extended.headline}
-          </h3>
-
-          <div className="mt-7 space-y-5 text-white/85 leading-relaxed text-[15px] sm:text-base">
-            {card.extended.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-          </div>
-
-          {card.extended.facts && (
-            <dl className="mt-9 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 pt-6 border-t border-white/10 text-sm">
-              {card.extended.facts.map((f) => (
-                <div key={f.label}>
-                  <dt className="text-[10px] uppercase tracking-[0.25em] text-rcb-muted">
-                    {f.label}
-                  </dt>
-                  <dd className="mt-1 text-white">{f.value}</dd>
-                </div>
-              ))}
-            </dl>
-          )}
-
-          <div className="mt-9 flex flex-col sm:flex-row gap-3">
-            <a
-              href="#shop"
-              onClick={(e) => {
-                e.preventDefault()
-                onClose()
-                // Defer scroll until dialog exit animation has had a tick.
-                window.setTimeout(() => {
-                  document
-                    .getElementById('shop')
-                    ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                }, 100)
-              }}
-              className="
-                inline-flex items-center justify-center gap-2 rounded-full
-                bg-rcb-red px-5 py-3 text-sm font-semibold text-white
-                hover:bg-rcb-red-deep transition-colors
-                focus:outline-none focus-visible:ring-2 focus-visible:ring-rcb-red focus-visible:ring-offset-2 focus-visible:ring-offset-rcb-bg
-              "
-            >
-              See the collection
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
-            <button
-              type="button"
-              onClick={onClose}
-              className="
-                inline-flex items-center justify-center gap-2 rounded-full
-                border border-white/15 bg-white/[0.04] px-5 py-3 text-sm text-white/85
-                hover:bg-white/[0.08] hover:text-white transition-colors
-                focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30
-              "
-            >
-              Close chapter
-            </button>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  )
-}
-
 function AboutCard({
   card,
   index,
   sectionScroll,
-  onOpen,
 }: {
   card: ChapterCard
   index: number
   sectionScroll: MotionValue<number>
-  onOpen: () => void
 }) {
   const ref = useRef<HTMLDivElement | null>(null)
   const interactive = useInteractive()
@@ -510,22 +342,6 @@ function AboutCard({
           </dl>
         )}
 
-        {/* Read-more affordance */}
-        <button
-          type="button"
-          onClick={onOpen}
-          className="
-            mt-7 inline-flex items-center gap-2
-            text-sm text-white/80 hover:text-white transition-colors
-            focus:outline-none focus-visible:ring-2 focus-visible:ring-rcb-red focus-visible:ring-offset-2 focus-visible:ring-offset-rcb-bg rounded-full
-          "
-          aria-label={`Read more about ${card.eyebrow}`}
-        >
-          <span className="inline-flex w-7 h-7 items-center justify-center rounded-full border border-white/15 bg-white/[0.03]">
-            <Plus className="w-3.5 h-3.5" />
-          </span>
-          Read the full chapter
-        </button>
       </div>
     </motion.article>
   )
@@ -537,8 +353,6 @@ export function About() {
     target: sectionRef,
     offset: ['start end', 'end start'],
   })
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-  const openCard = openIndex !== null ? CARDS[openIndex] : null
 
   return (
     <section
@@ -592,21 +406,9 @@ export function About() {
               card={card}
               index={i}
               sectionScroll={scrollYProgress}
-              onOpen={() => setOpenIndex(i)}
             />
           ))}
         </div>
-
-        {/* Dialog overlay (portal-equivalent via fixed positioning) */}
-        <AnimatePresence>
-          {openCard && openIndex !== null && (
-            <CardDetailDialog
-              card={openCard}
-              index={openIndex}
-              onClose={() => setOpenIndex(null)}
-            />
-          )}
-        </AnimatePresence>
 
         {/* Founder quote — closing beat */}
         <motion.figure
